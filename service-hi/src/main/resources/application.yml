@@ -1,0 +1,8 @@
+eureka:
+  client:
+  service-url: http://localhost:8761/eureka/
+server:
+  port: 8763
+spring:
+  application:
+    name: service-hi
