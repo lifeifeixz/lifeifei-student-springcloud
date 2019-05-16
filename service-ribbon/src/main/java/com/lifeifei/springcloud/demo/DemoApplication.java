@@ -19,7 +19,7 @@ public class DemoApplication {
 
     @Bean
     @LoadBalanced
-    RestTemplate restTemplate(){
+    RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
