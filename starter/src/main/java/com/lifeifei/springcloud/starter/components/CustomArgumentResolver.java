@@ -15,7 +15,7 @@ public class CustomArgumentResolver implements HandlerMethodArgumentResolver {
     public boolean supportsParameter(MethodParameter methodParameter) {
         System.out.println("参数解析器");
         System.out.println(methodParameter);
-        return true;
+        return false;
     }
 
     @Override

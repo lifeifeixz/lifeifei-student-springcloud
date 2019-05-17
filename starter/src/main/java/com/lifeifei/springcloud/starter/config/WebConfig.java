@@ -5,6 +5,8 @@ import com.lifeifei.springcloud.starter.components.SpringBeanContext;
 import com.lifeifei.springcloud.starter.interceptor.CustomOneInterceptor;
 import com.lifeifei.springcloud.starter.interceptor.CustomTwoInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -38,5 +40,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(SpringBeanContext.getBean(CustomOneInterceptor.class));
         registry.addInterceptor(SpringBeanContext.getBean(CustomTwoInterceptor.class));
+    }
+
+    @Override
+    protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(new MappingJackson2HttpMessageConverter());
     }
 }
