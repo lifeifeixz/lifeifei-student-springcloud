@@ -19,6 +19,10 @@ public class ExceptionHandler {
             result.setStatus(ResultType.FAIL.name());
             return result;
         }
-        return new Result(-1, e.getMessage(), e.getLocalizedMessage());
+        result.setStatus(ResultType.FAIL.name());
+        result.setMsg("系统异常");
+        result.setCode(-1);
+        result.setContent(e.toString());
+        return result;
     }
 }
