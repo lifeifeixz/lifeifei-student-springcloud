@@ -1,6 +1,6 @@
-package com.lifeifei.springcloud.starter.config;
+package com.lifeifei.springcloud.starter.config.bean;
 
-import com.lifeifei.springcloud.starter.components.Logger;
+import com.lifeifei.springcloud.starter.components.demo.Logger;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 

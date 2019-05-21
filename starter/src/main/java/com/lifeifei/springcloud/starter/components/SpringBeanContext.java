@@ -8,6 +8,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.ResolvableType;
 import org.springframework.stereotype.Component;
 
+/**
+ * 获取spring容器中bean的工具类
+ */
 @Component
 public class SpringBeanContext implements ApplicationContextAware {
     private static ApplicationContext applicationContext;

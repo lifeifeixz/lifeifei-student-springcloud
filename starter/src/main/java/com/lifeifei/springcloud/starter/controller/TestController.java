@@ -1,6 +1,9 @@
 package com.lifeifei.springcloud.starter.controller;
 
-import com.lifeifei.springcloud.starter.components.*;
+import com.lifeifei.springcloud.starter.components.demo.Compute;
+import com.lifeifei.springcloud.starter.components.demo.DateUtil;
+import com.lifeifei.springcloud.starter.components.demo.Logger;
+import com.lifeifei.springcloud.starter.components.demo.StringUtils;
 import com.lifeifei.springcloud.starter.exptions.BizException;
 import com.lifeifei.springcloud.starter.mode.enums.ResultEnum;
 import com.lifeifei.springcloud.starter.service.TestService;

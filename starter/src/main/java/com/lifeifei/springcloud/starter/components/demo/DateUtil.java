@@ -1,4 +1,4 @@
-package com.lifeifei.springcloud.starter.components;
+package com.lifeifei.springcloud.starter.components.demo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

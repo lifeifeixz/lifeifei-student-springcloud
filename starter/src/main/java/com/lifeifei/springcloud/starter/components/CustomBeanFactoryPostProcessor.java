@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * bean定义操作
+ * spring在实例化工厂时调用该bean，可以做一些前置处理
  */
 @Component
 public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
@@ -20,6 +20,6 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
         Map<String, Object> map = configurableListableBeanFactory.getBeansWithAnnotation(Autowired.class);
-        map.keySet().stream().forEach(e -> System.out.println("bean定义数据:"+map.get(e)));
+        map.keySet().stream().forEach(e -> System.out.println("bean定义数据:" + map.get(e)));
     }
 }

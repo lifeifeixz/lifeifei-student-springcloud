@@ -1,6 +1,6 @@
-package com.lifeifei.springcloud.starter.config;
+package com.lifeifei.springcloud.starter.config.bean;
 
-import com.lifeifei.springcloud.starter.components.DateUtil;
+import com.lifeifei.springcloud.starter.components.demo.DateUtil;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;

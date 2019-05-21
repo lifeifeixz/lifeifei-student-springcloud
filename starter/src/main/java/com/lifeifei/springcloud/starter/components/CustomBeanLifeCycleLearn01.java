@@ -6,6 +6,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+/**
+ * spring中bean生命周期监测类
+ * <strong>可删除</strong>
+ */
 @Component
 public class CustomBeanLifeCycleLearn01 implements BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean, ApplicationContextAware {
     /**

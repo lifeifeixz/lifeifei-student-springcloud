@@ -1,8 +1,8 @@
 package com.lifeifei.springcloud.starter;
 
-import com.lifeifei.springcloud.starter.components.Compute;
-import com.lifeifei.springcloud.starter.config.ImportBeanDefinitionRegisterTest;
-import com.lifeifei.springcloud.starter.config.ImportSelectorTest;
+import com.lifeifei.springcloud.starter.components.demo.Compute;
+import com.lifeifei.springcloud.starter.config.bean.ImportBeanDefinitionRegisterTest;
+import com.lifeifei.springcloud.starter.config.bean.ImportSelectorTest;
 import com.lifeifei.springcloud.starter.property.KnifeProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

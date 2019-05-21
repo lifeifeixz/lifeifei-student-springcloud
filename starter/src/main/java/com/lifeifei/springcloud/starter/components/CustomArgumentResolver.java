@@ -9,6 +9,10 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 参数前置处理器
+ * 当spring将数据传递给controller的方法时，可以在这中间做一些处理（慎用）
+ */
 @Component
 public class CustomArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
@@ -23,6 +27,6 @@ public class CustomArgumentResolver implements HandlerMethodArgumentResolver {
                                   ModelAndViewContainer modelAndViewContainer,
                                   NativeWebRequest nativeWebRequest,
                                   WebDataBinderFactory webDataBinderFactory) {
-        return nativeWebRequest.getNativeRequest(HttpServletRequest.class).getParameter("name")+" resolve";
+        return nativeWebRequest.getNativeRequest(HttpServletRequest.class).getParameter("name") + " resolve";
     }
 }
