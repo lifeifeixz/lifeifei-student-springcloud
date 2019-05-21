@@ -12,11 +12,13 @@ public class ExceptionHandler {
     @ResponseBody
     public Result handler(Exception e) {
         Result<Object> result = new Result<>();
+        e.printStackTrace();
         if (e instanceof BizException) {
             BizException bizE = (BizException) e;
             result.setCode(bizE.getCode());
             result.setMsg(bizE.getMsg());
             result.setStatus(ResultType.FAIL.name());
+            result.setContent(bizE.getContent());
             return result;
         }
         result.setStatus(ResultType.FAIL.name());

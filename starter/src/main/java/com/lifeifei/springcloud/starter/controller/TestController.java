@@ -1,9 +1,6 @@
 package com.lifeifei.springcloud.starter.controller;
 
-import com.lifeifei.springcloud.starter.components.Compute;
-import com.lifeifei.springcloud.starter.components.DateUtil;
-import com.lifeifei.springcloud.starter.components.Logger;
-import com.lifeifei.springcloud.starter.components.StringUtils;
+import com.lifeifei.springcloud.starter.components.*;
 import com.lifeifei.springcloud.starter.exptions.BizException;
 import com.lifeifei.springcloud.starter.mode.enums.ResultEnum;
 import com.lifeifei.springcloud.starter.service.TestService;
@@ -36,16 +33,16 @@ public class TestController {
     @GetMapping("/")
     @ResponseBody
     public String index(String name) {
-        return name;
+        return testService.showName();
     }
 
     @GetMapping("/object")
     @ResponseBody
-    public Map<String, Object> object(String name,String addr) {
+    public Map<String, Object> object(String name, String addr) {
         Map<String, Object> map = new HashMap<>();
         map.put(name, name);
-        if(addr.equals("error")){
-            throw new BizException(ResultEnum.ADDRESS_ERROR);
+        if (addr.equals("error")) {
+            throw new BizException(ResultEnum.ADDRESS_ERROR, map);
         }
         return map;
     }
