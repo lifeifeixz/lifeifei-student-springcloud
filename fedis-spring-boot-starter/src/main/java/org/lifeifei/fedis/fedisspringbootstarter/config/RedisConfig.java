@@ -1,44 +1,55 @@
 package org.lifeifei.fedis.fedisspringbootstarter.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
+@Component
 @ConfigurationProperties(prefix = "redis")
 public class RedisConfig {
-    private String hostName;
-    private String userName;
-    private String passWord;
-    private Integer dataBase;
+
+    @Value("${redis.hostname}")
+    private String hostname;
+
+    @Value("${redis.username}")
+    private String username;
+
+    @Value("${redis.password}")
+    private String password;
+
+    @Value("${redis.database}")
+    private Integer database;
 
 
-    public String getHostName() {
-        return hostName;
+    public String getHostname() {
+        return hostname;
     }
 
-    public void setHostName(String hostName) {
-        this.hostName = hostName;
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Integer getDataBase() {
-        return dataBase;
+    public Integer getDatabase() {
+        return database;
     }
 
-    public void setDataBase(Integer dataBase) {
-        this.dataBase = dataBase;
+    public void setDatabase(Integer database) {
+        this.database = database;
     }
 }

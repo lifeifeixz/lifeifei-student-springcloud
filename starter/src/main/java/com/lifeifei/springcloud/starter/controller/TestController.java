@@ -1,5 +1,6 @@
 package com.lifeifei.springcloud.starter.controller;
 
+import com.lifeifei.springcloud.starter.components.condit.RandDataComponent;
 import com.lifeifei.springcloud.starter.components.demo.Compute;
 import com.lifeifei.springcloud.starter.components.demo.DateUtil;
 import com.lifeifei.springcloud.starter.components.demo.Logger;
@@ -33,10 +34,19 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    @Autowired
+    private RandDataComponent randDataComponent;
+
     @GetMapping("/")
     @ResponseBody
     public String index(String name) {
         return testService.showName();
+    }
+
+    @GetMapping("/rand")
+    @ResponseBody
+    public Object rand() {
+        return randDataComponent.rand();
     }
 
     @GetMapping("/object")

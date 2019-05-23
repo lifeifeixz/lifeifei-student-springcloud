@@ -1,2 +1,7 @@
 server:
   address:
+
+
+conditional:
+  rand:
+    type: boolean
