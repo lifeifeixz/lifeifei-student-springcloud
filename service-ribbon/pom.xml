@@ -44,6 +44,11 @@
             <version>RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
         <!--
         作者：方志朋
         来源：CSDN
