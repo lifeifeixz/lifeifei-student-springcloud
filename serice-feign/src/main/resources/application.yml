@@ -1,6 +1,6 @@
 eureka:
   client:
-  service-url: http://localhost:8761/eureka/
+  service-url: http://114.67.89.26:8761/eureka/
 
 server:
   port: 8765
