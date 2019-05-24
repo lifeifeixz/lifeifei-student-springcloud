@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
  * 来源：CSDN
  * 原文：https://blog.csdn.net/forezp/article/details/69808079
  * 版权声明：本文为博主原创文章，转载请附上博文链接！
+ * @author feifei.li
  */
 @RestController
 public class HiController {
 
     @Autowired
-    SchedualServiceHi schedualServiceHi;
+    public SchedualServiceHi schedualServiceHi;
 
     @RequestMapping(value = "/hi", method = RequestMethod.GET)
     public String sayHi(@RequestParam String name) {

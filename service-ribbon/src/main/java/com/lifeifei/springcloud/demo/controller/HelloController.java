@@ -15,6 +15,6 @@ public class HelloController {
 
     @RequestMapping(value = "hi")
     public String hi(@RequestParam String name) {
-        return helloService.hiService(name);
+        return helloService.hiService(name)+"\t --消息来自ribbon";
     }
 }

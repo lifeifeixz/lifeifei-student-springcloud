@@ -2,6 +2,9 @@ package com.lifeifei.springcloud.sericefeign.feigns;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * @author feifei.li
+ */
 @Component
 public class SchedualServiceHiHystrix implements SchedualServiceHi {
     @Override
