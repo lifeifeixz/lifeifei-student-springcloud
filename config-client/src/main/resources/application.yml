@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-client
+  profiles:
+    active: dev
+  cloud:
+    config:
+      label: master
+      profile: ${spring.profiles.active}
+      uri: http://localhost:8888/
+      name: config2-client
+
+server:
+  port: 8881

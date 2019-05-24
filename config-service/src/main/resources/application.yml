@@ -5,10 +5,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/forezp/SpringcloudConfig
+          uri: https://gitee.com/flysLi/springcloud-config-demo
           search-paths: respo
           default-label: master
-#          username: flysLi
-#          password: a520520
+          username: flysLi
+          password: a520520
 server:
   port: 8888
