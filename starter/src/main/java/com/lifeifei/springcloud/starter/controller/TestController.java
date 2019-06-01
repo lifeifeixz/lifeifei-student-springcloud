@@ -6,12 +6,12 @@ import com.lifeifei.springcloud.starter.components.demo.DateUtil;
 import com.lifeifei.springcloud.starter.components.demo.Logger;
 import com.lifeifei.springcloud.starter.components.demo.StringUtils;
 import com.lifeifei.springcloud.starter.exptions.BizException;
+import com.lifeifei.springcloud.starter.mode.User;
 import com.lifeifei.springcloud.starter.mode.enums.ResultEnum;
 import com.lifeifei.springcloud.starter.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,11 +43,18 @@ public class TestController {
         return testService.showName();
     }
 
+    @PostMapping("/param/object")
+    @ResponseBody
+    public User paramBody(@Validated @RequestBody User user) {
+        return user;
+    }
+
     @GetMapping("/rand")
     @ResponseBody
     public Object rand() {
         return randDataComponent.rand();
     }
+
 
     @GetMapping("/object")
     @ResponseBody
