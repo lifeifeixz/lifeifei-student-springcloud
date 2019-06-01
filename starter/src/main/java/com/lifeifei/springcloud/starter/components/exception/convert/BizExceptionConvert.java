@@ -7,7 +7,7 @@ import com.lifeifei.springcloud.starter.mode.Result;
 import com.lifeifei.springcloud.starter.mode.enums.ResultType;
 import org.springframework.stereotype.Component;
 
-@Component(value = "bizException")
+@Component
 public class BizExceptionConvert extends AbstractExceptionConvertStrategy implements ExceptionConvertStrategy {
 
     @Override

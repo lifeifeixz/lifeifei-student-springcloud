@@ -14,7 +14,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component(value = "methodArgumentNotValidException")
+@Component
 public class MethodArgumentNotValidExceptionConvert
         extends AbstractExceptionConvertStrategy
         implements ExceptionConvertStrategy {

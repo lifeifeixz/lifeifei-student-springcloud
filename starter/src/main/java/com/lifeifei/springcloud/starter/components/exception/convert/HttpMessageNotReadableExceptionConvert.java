@@ -7,7 +7,7 @@ import com.lifeifei.springcloud.starter.mode.enums.ResultType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Component;
 
-@Component(value = "httpMessageNotReadableException")
+@Component
 public class HttpMessageNotReadableExceptionConvert
         extends AbstractExceptionConvertStrategy
         implements ExceptionConvertStrategy {
