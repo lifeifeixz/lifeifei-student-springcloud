@@ -55,6 +55,13 @@ public class TestController {
         return randDataComponent.rand();
     }
 
+    @GetMapping("/system/error")
+    @ResponseBody
+    public Object error() {
+        String str = null;
+        return str.substring(0,10);
+    }
+
 
     @GetMapping("/object")
     @ResponseBody

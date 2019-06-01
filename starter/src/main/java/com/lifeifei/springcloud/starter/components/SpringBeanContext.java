@@ -6,7 +6,13 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.ResolvableType;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 获取spring容器中bean的工具类
@@ -88,5 +94,22 @@ public class SpringBeanContext implements ApplicationContextAware {
 
     public static String[] getAliases(String s) {
         return applicationContext.getAliases(s);
+    }
+
+    public static <T> Map<String, T> getBeansOfType(Class<T> type) {
+        return applicationContext.getBeansOfType(type, true, true);
+    }
+
+    public static <T> List<T> getBeansByType(Class<T> type) {
+        Map<String, T> map = getBeansOfType(type);
+        Collection<T> values = map.values();
+        ArrayList<T> beans = new ArrayList<>();
+        for (T bean : values) {
+            beans.add(bean);
+        }
+        return beans;
+    }
+    public static ApplicationContext getApplicationContext(){
+        return applicationContext;
     }
 }

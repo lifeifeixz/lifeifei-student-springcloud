@@ -1,6 +1,6 @@
 package com.lifeifei.springcloud.starter.config;
 
-import com.lifeifei.springcloud.starter.components.ReturnValueHandler;
+import com.lifeifei.springcloud.starter.components.returnvalue.ReturnValueHandler;
 import com.lifeifei.springcloud.starter.components.SpringBeanContext;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Configuration;

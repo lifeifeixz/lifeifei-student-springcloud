@@ -1,4 +1,4 @@
-package com.lifeifei.springcloud.starter.components;
+package com.lifeifei.springcloud.starter.components.returnvalue;
 
 import com.lifeifei.springcloud.starter.mode.Result;
 import com.lifeifei.springcloud.starter.mode.enums.ResultType;
