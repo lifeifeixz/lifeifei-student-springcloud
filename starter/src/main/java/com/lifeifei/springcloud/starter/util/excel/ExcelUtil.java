@@ -27,15 +27,39 @@ public class ExcelUtil {
         int rowNum = sheet.getLastRowNum();
         //获取T中需要导如的属性
         List<Entry<String, Field>> metaData = getMetaData(t);
-        for (int j = 0; j < metaData.size(); j++) {
-            for (int i = 0; i < rowNum; i++) {
-                Row row = sheet.getRow(i);
+
+        for (int i = 1; i <= rowNum; i++) {
+            Row row = sheet.getRow(i);
+            T bean = getInstance(t);
+            for (int j = 0; j < metaData.size(); j++) {
                 Cell cell = row.getCell(j);
-                System.out.print(cell.getStringCellValue() + "\t");
+                Object value = getCellValue(cell);
+
             }
             System.out.println();
         }
         return null;
+    }
+
+    public static <T>T getInstance(Class<T> t){
+        try {
+            return t.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static Object getCellValue(Cell cell) {
+        if (cell.getCellType() == Cell.CELL_TYPE_STRING) {//string
+            return cell.getStringCellValue();
+        } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+            return cell.getNumericCellValue();
+        }else{
+            return cell.getDateCellValue();
+        }
     }
 
     private static List<Entry<String, Field>> getMetaData(Class t) {
@@ -58,7 +82,7 @@ public class ExcelUtil {
             return ts;
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 inputStream.close();
             } catch (IOException e) {
