@@ -10,4 +10,9 @@ public abstract class AbstractExceptionConvertStrategy implements ExceptionConve
     public ExceptionConvertStrategy getExceptionConvertStrategy() {
         return exceptionConvertStrategy;
     }
+
+    @Override
+    public ExceptionConvertStrategy nextExceptionConvertStrategy() {
+        return exceptionConvertStrategy;
+    }
 }

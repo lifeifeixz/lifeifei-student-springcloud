@@ -23,7 +23,6 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice<Result> {
 
     @Override
     public Result beforeBodyWrite(Result result, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        result.setMsg(result.getMsg() + "[本消息由MyResponseBodyAdvice代理]");
         return result;
     }
 }

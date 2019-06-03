@@ -1,5 +1,6 @@
 package com.lifeifei.springcloud.starter.controller;
 
+import com.lifeifei.springcloud.starter.annotation.MethodBefore;
 import com.lifeifei.springcloud.starter.components.condit.RandDataComponent;
 import com.lifeifei.springcloud.starter.components.demo.Compute;
 import com.lifeifei.springcloud.starter.components.demo.DateUtil;
@@ -9,10 +10,15 @@ import com.lifeifei.springcloud.starter.exptions.BizException;
 import com.lifeifei.springcloud.starter.mode.User;
 import com.lifeifei.springcloud.starter.mode.enums.ResultEnum;
 import com.lifeifei.springcloud.starter.service.TestService;
+import com.lifeifei.springcloud.starter.util.excel.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +46,7 @@ public class TestController {
     @GetMapping("/")
     @ResponseBody
     public String index(String name) {
-        return testService.showName();
+        return name;
     }
 
     @PostMapping("/param/object")
@@ -60,6 +66,18 @@ public class TestController {
     public Object error() {
         String str = null;
         return str.substring(0,10);
+    }
+
+    @GetMapping("/validator")
+    @ResponseBody
+    public Object validator(@RequestParam(required = true) Integer age) {
+        return age;
+    }
+
+    @PostMapping("/import")
+    @ResponseBody
+    public Object invokeImport(MultipartFile file) throws IOException {
+        return ExcelUtil.invokeImort(file.getInputStream(),User.class);
     }
 
 

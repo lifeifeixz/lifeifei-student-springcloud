@@ -1,5 +1,6 @@
 package com.lifeifei.springcloud.starter.components;
 
+import com.lifeifei.springcloud.starter.annotation.MethodBefore;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -19,6 +20,9 @@ public class CustomArgumentResolver implements HandlerMethodArgumentResolver {
     public boolean supportsParameter(MethodParameter methodParameter) {
         System.out.println("参数解析器");
         System.out.println(methodParameter);
+        if (methodParameter.getMethodAnnotation(MethodBefore.class) != null) {
+            return true;
+        }
         return false;
     }
 
