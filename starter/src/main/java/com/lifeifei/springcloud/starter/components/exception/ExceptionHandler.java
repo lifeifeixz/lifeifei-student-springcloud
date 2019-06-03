@@ -17,6 +17,7 @@ public class ExceptionHandler implements InitializingBean {
     @org.springframework.web.bind.annotation.ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result handler(Exception e) {
+        e.printStackTrace();
         return exceptionConvertStrategy.convert(e);
     }
 

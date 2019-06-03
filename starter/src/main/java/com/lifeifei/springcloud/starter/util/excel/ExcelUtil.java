@@ -27,21 +27,27 @@ public class ExcelUtil {
         int rowNum = sheet.getLastRowNum();
         //获取T中需要导如的属性
         List<Entry<String, Field>> metaData = getMetaData(t);
-
+        ArrayList<T> beans = new ArrayList<>();
         for (int i = 1; i <= rowNum; i++) {
             Row row = sheet.getRow(i);
-            T bean = getInstance(t);
+            T instance = getInstance(t);
             for (int j = 0; j < metaData.size(); j++) {
+                Entry<String, Field> entry = metaData.get(j);
+
                 Cell cell = row.getCell(j);
                 Object value = getCellValue(cell);
-
+                try {
+                    entry.getValue().set(instance, value);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
-            System.out.println();
+            beans.add(instance);
         }
-        return null;
+        return beans;
     }
 
-    public static <T>T getInstance(Class<T> t){
+    public static <T> T getInstance(Class<T> t) {
         try {
             return t.newInstance();
         } catch (InstantiationException e) {
@@ -56,8 +62,9 @@ public class ExcelUtil {
         if (cell.getCellType() == Cell.CELL_TYPE_STRING) {//string
             return cell.getStringCellValue();
         } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-            return cell.getNumericCellValue();
-        }else{
+            cell.setCellType(cell.CELL_TYPE_STRING);
+            return Integer.valueOf(cell.getStringCellValue());
+        } else {
             return cell.getDateCellValue();
         }
     }

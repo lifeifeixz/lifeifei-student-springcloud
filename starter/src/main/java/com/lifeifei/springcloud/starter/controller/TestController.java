@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -76,7 +77,7 @@ public class TestController {
 
     @PostMapping("/import")
     @ResponseBody
-    public Object invokeImport(MultipartFile file) throws IOException {
+    public List invokeImport(MultipartFile file) throws IOException {
         return ExcelUtil.invokeImort(file.getInputStream(),User.class);
     }
 
