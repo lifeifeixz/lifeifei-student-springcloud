@@ -22,11 +22,11 @@ public class ExcelUtil {
      * @param <T>
      * @return
      */
-    public static <T> List<T> formatToBean(Workbook workbook, T t) {
+    public static <T> List<T> formatToBean(Workbook workbook, Class<T> t) {
         Sheet sheet = workbook.getSheetAt(0);
         int rowNum = sheet.getLastRowNum();
         //获取T中需要导如的属性
-        List<Entry<String, Field>> metaData = getMetaData(t.getClass());
+        List<Entry<String, Field>> metaData = getMetaData(t);
         for (int j = 0; j < metaData.size(); j++) {
             for (int i = 0; i < rowNum; i++) {
                 Row row = sheet.getRow(i);
@@ -51,7 +51,7 @@ public class ExcelUtil {
         return entrys;
     }
 
-    public static <T> List<T> invokeImort(InputStream inputStream, T t) {
+    public static <T> List<T> invokeImort(InputStream inputStream, Class<T> t) {
 
         try {
             List<T> ts = formatToBean(new XSSFWorkbook(inputStream), t);
