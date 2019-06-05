@@ -78,7 +78,7 @@ public class TestController {
     @PostMapping("/import")
     @ResponseBody
     public List invokeImport(MultipartFile file) throws IOException {
-        return ExcelUtil.invokeImort(file.getInputStream(),User.class);
+        return ExcelUtil.invokeImport(file.getInputStream(),User.class);
     }
 
 

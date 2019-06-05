@@ -12,6 +12,9 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author feifei.li
+ */
 public class ExcelUtil {
 
     /**
@@ -22,7 +25,7 @@ public class ExcelUtil {
      * @param <T>
      * @return
      */
-    public static <T> List<T> formatToBean(Workbook workbook, Class<T> t) {
+    public static <T> List<T> getBeanFormWorkbook(Workbook workbook, Class<T> t, Callback callback) {
         Sheet sheet = workbook.getSheetAt(0);
         int rowNum = sheet.getLastRowNum();
         //获取T中需要导如的属性
@@ -33,7 +36,6 @@ public class ExcelUtil {
             T instance = getInstance(t);
             for (int j = 0; j < metaData.size(); j++) {
                 Entry<String, Field> entry = metaData.get(j);
-
                 Cell cell = row.getCell(j);
                 Object value = getCellValue(cell);
                 try {
@@ -41,6 +43,9 @@ public class ExcelUtil {
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
+            }
+            if (callback != null) {
+                callback.execute(instance);
             }
             beans.add(instance);
         }
@@ -59,10 +64,11 @@ public class ExcelUtil {
     }
 
     private static Object getCellValue(Cell cell) {
-        if (cell.getCellType() == Cell.CELL_TYPE_STRING) {//string
+        /*string*/
+        if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
             return cell.getStringCellValue();
         } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-            cell.setCellType(cell.CELL_TYPE_STRING);
+            cell.setCellType(Cell.CELL_TYPE_STRING);
             return Integer.valueOf(cell.getStringCellValue());
         } else {
             return cell.getDateCellValue();
@@ -82,10 +88,13 @@ public class ExcelUtil {
         return entrys;
     }
 
-    public static <T> List<T> invokeImort(InputStream inputStream, Class<T> t) {
+    public static <T> List<T> invokeImport(InputStream inputStream, Class<T> t) {
+        return invokeImport(inputStream, t, null);
+    }
 
+    public static <T> List<T> invokeImport(InputStream inputStream, Class<T> t, Callback callback) {
         try {
-            List<T> ts = formatToBean(new XSSFWorkbook(inputStream), t);
+            List<T> ts = getBeanFormWorkbook(new XSSFWorkbook(inputStream), t, callback);
             return ts;
         } catch (IOException e) {
             e.printStackTrace();
