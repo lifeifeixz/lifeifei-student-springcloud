@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * controller方法返回结果处理器。
  * 在spring调用controller.method()后执行。
  * 可对controller返回的结果再次增强处理
+ * @author feifei.li
  */
 @ControllerAdvice
 public class MyResponseBodyAdvice implements ResponseBodyAdvice<Result> {

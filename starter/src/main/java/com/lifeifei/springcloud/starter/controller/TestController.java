@@ -11,6 +11,7 @@ import com.lifeifei.springcloud.starter.mode.User;
 import com.lifeifei.springcloud.starter.mode.enums.ResultEnum;
 import com.lifeifei.springcloud.starter.service.TestService;
 import com.lifeifei.springcloud.starter.util.excel.ExcelUtil;
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -66,7 +67,7 @@ public class TestController {
     @ResponseBody
     public Object error() {
         String str = null;
-        return str.substring(0,10);
+        return str.substring(0, 10);
     }
 
     @GetMapping("/validator")
@@ -78,7 +79,7 @@ public class TestController {
     @PostMapping("/import")
     @ResponseBody
     public List invokeImport(MultipartFile file) throws IOException {
-        return ExcelUtil.invokeImport(file.getInputStream(),User.class);
+        return ExcelUtil.invokeImport(file.getInputStream(), User.class);
     }
 
 
@@ -91,5 +92,14 @@ public class TestController {
             throw new BizException(ResultEnum.ADDRESS_ERROR, map);
         }
         return map;
+    }
+
+    @Autowired
+    ListableBeanFactory listableBeanFactory;
+
+    @GetMapping(value = "factory")
+    public Object factory() {
+        System.out.println(listableBeanFactory);
+        return listableBeanFactory;
     }
 }

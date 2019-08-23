@@ -3,6 +3,9 @@ package com.lifeifei.springcloud.starter.components.exception;
 import com.lifeifei.springcloud.starter.mode.Result;
 import com.lifeifei.springcloud.starter.mode.enums.ResultType;
 
+/**
+ * @author feifei.li
+ */
 public interface ExceptionConvertStrategy<T extends Exception> {
 
     /**

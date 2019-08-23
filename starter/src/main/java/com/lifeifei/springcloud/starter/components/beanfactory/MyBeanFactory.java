@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * spring在启动过程中会调用该类，并传入BeanFactory工厂
+ * @author feifei.li
  */
 @Component
 public class MyBeanFactory implements BeanFactoryAware {

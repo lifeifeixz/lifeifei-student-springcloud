@@ -2,6 +2,9 @@ package com.lifeifei.springcloud.starter.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * @author feifei.li
+ */
 @ConfigurationProperties(prefix = "knife")
 public class KnifeProperty {
     private String enable;

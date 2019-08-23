@@ -11,6 +11,9 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBody
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author feifei.li
+ */
 @Configuration
 public class RestReturnValueHandlerConfigurer implements InitializingBean {
 

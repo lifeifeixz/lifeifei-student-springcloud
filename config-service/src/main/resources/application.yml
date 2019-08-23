@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/flysLi/springcloud-config-demo
+          uri: https://gitee.com/flysLi/springcloud-config-demo1
           search-paths: respo
           default-label: master
           username: flysLi

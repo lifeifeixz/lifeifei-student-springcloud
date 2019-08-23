@@ -7,6 +7,9 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+/**
+ * @author feifei.li
+ */
 public class ReturnValueHandler implements HandlerMethodReturnValueHandler {
     private HandlerMethodReturnValueHandler proxyObject;
 

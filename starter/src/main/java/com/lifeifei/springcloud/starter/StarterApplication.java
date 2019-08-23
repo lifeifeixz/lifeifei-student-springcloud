@@ -10,6 +10,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 
+/**
+ * @author feifei.li
+ */
 @Import({
         Compute.class,
         ImportSelectorTest.class,

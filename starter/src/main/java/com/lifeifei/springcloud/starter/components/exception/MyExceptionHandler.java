@@ -4,13 +4,17 @@ import com.lifeifei.springcloud.starter.components.SpringBeanContext;
 import com.lifeifei.springcloud.starter.components.exception.convert.DefaultExceptionConvert;
 import com.lifeifei.springcloud.starter.mode.Result;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * @author feifei.li
+ */
 @ControllerAdvice
-public class ExceptionHandler implements InitializingBean {
+public class MyExceptionHandler implements InitializingBean {
 
     private ExceptionConvertStrategy exceptionConvertStrategy;
 
