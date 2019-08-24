@@ -1,9 +1,6 @@
 package org.flys.cg.generators;
 
-import org.flys.cg.Context;
-import org.flys.cg.Generator;
-import org.flys.cg.MetaTable;
-import org.flys.cg.SupportPrintGenerator;
+import org.flys.cg.*;
 import org.flys.cg.util.FileUtil;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.UtilClassSplicing;
@@ -17,6 +14,7 @@ import java.util.regex.Matcher;
  */
 public abstract class AbstractGenerator implements Generator, SupportPrintGenerator {
     protected String layer;
+    protected Current current = Current.current;
 
     static final String PACKAGE = "&package&";
     static final String CLASS_NAME = "&class-name&";

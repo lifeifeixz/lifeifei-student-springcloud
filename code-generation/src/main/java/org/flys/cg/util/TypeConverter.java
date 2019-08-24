@@ -10,8 +10,8 @@ public class TypeConverter {
     static Map<String, String> typeDictionaries = new HashMap<>();
 
     static {
-        typeDictionaries.put("VARCHAR", "String");
-        typeDictionaries.put("DATETIME", "java.util.Date");
+        typeDictionaries.put("varchar", "String");
+        typeDictionaries.put("datetime", "java.util.Date");
         typeDictionaries.put("int", "int");
         typeDictionaries.put("bigint", "long");
         typeDictionaries.put("boolean", "boolean");
@@ -27,7 +27,7 @@ public class TypeConverter {
      * @return
      */
     public static String exchange(String columnType) {
-        String r = typeDictionaries.get(columnType);
+        String r = typeDictionaries.get(columnType.toLowerCase());
         return r == null ? columnType : r;
     }
 }

@@ -1,11 +1,15 @@
-package org.flys.cg;
+package org.flys.cg.resource;
+
+import org.flys.cg.MetaTable;
 
 import java.util.List;
 
 /**
+ * 原料来源
+ *
  * @author feifei.li
  */
-public interface DataBaseConnection {
+public interface RawMaterial {
 
 
     /**

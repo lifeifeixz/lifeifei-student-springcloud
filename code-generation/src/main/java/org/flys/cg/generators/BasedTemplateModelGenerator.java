@@ -27,7 +27,7 @@ public class BasedTemplateModelGenerator extends AbstractGenerator implements Ge
 
     @Override
     public Product doGenerate(MetaTable metaTable) {
-        this.layer="model";
+        this.layer = "model";
         String resource = FileUtil.readFile(resourceRoot + "Model.template");
         String className = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(metaTable.getTableName()));
         resource.replace(CLASS_NAME, className);
@@ -49,11 +49,14 @@ public class BasedTemplateModelGenerator extends AbstractGenerator implements Ge
             fieldStr.append(getMethod);
             fieldStr.append("\n");
         }
-        resource = resource.replace(PACKAGE, context.getPackageRoot() + ".model").replace(CLASS_NAME,className);
+        String packageName = context.getPackageRoot() + ".model";
+        resource = resource.replace(PACKAGE, packageName).replace(CLASS_NAME, className);
         String classString = resource.replace(DATA, fieldStr.toString());
         Product product = new Product();
-        product.setName(className+".java");
+        product.setName(className + ".java");
         product.setContext(classString);
+        current.setModelClassName(className);
+        current.setFullModelClassName(packageName + "." + className);
         return product;
     }
 }
