@@ -2,6 +2,7 @@ package org.flys.cg;
 
 import javassist.CannotCompileException;
 import org.flys.cg.generators.BasedTemplateMapperGenerator;
+import org.flys.cg.generators.BasedTemplateMapperXmlGenerator;
 import org.flys.cg.generators.BasedTemplateModelGenerator;
 import org.flys.cg.resource.MySqlMeterial;
 import org.flys.cg.resource.RawMaterial;
@@ -34,8 +35,12 @@ public class DefaultConsoleImpl implements Console {
             MetaTable metaTable = rawMaterial.getTable(table);
             BasedTemplateModelGenerator modelGenerator = new BasedTemplateModelGenerator(null);
             modelGenerator.print(metaTable);
+
             BasedTemplateMapperGenerator mapperGenerator = new BasedTemplateMapperGenerator(null);
             mapperGenerator.print(metaTable);
+
+            BasedTemplateMapperXmlGenerator xmlGenerator = new BasedTemplateMapperXmlGenerator(null);
+            xmlGenerator.print(metaTable);
         }
 
     }

@@ -27,6 +27,6 @@ public class JavaDataMethodCodeBuilder implements JavaDataMethodBuilderInterface
 
     @Override
     public String buildSet(String name, String type) {
-        return "public " + type + " set" + StringUtil.acronymUpperCase(name) + "(){return " + name + ";}";
+        return "public void set" + StringUtil.acronymUpperCase(name) + "(" + type + " " + name + "){this." + name + "=" + name + ";}";
     }
 }

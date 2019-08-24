@@ -12,10 +12,11 @@ public class MySqlMeterial implements RawMaterial {
     public static final String userName = "root";
     public static final String passWord = "root";
     private static final String tableName = "table_name";
+    private static final String database = "jst-mes";
 
     @Override
     public List<String> getTables() {
-        String sql = "SELECT table_name FROM `TABLES` WHERE TABLE_SCHEMA='jst-mes'";
+        String sql = "SELECT table_name FROM `TABLES` WHERE TABLE_SCHEMA='" + database + "'";
         Connection connection = getConnection();
         Statement statement = null;
         ArrayList<String> list = null;
@@ -43,7 +44,7 @@ public class MySqlMeterial implements RawMaterial {
     @Override
     public MetaTable getTable(String tableName) {
         String sql = "SELECT column_name,is_nullable,data_type,CHARACTER_MAXIMUM_LENGTH,COLUMN_COMMENT,COLUMN_KEY FROM `COLUMNS`" +
-                " WHERE TABLE_SCHEMA='aqdyb' AND table_name='" + tableName + "'";
+                " WHERE TABLE_SCHEMA='" + database + "' AND table_name='" + tableName + "'";
         Connection connection = getConnection();
         Statement statement = null;
         MetaTable table = new MetaTable(tableName);

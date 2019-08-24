@@ -27,6 +27,8 @@ public class BasedTemplateMapperGenerator extends AbstractGenerator implements G
         product.setName(mapperMeta.getClassName() + ".java");
         product.setContext(text);
         String fullClassName = mapperMeta.getPackageText() + "." + mapperMeta.getClassName();
+
+        /*封装结果*/
         current.setMapperClassName(mapperMeta.getClassName());
         current.setFullMapperClassName(fullClassName);
         return product;
@@ -36,10 +38,9 @@ public class BasedTemplateMapperGenerator extends AbstractGenerator implements G
         template = template.replaceAll("&package&", meta.getPackageText());
         template = template.replaceAll("&class-name&", meta.getClassName());
         template = template.replaceAll("&model-class-name&", meta.getModelName());
-        if(meta.getPrimaryKey()!=null){
-            template = template.replaceAll("&primary-key&", meta.getPrimaryKey());
-            template = template.replaceAll("&primary-key-type&", meta.getPrimaryKeyType());
-        }
+        template = template.replaceAll("&primary-key&", meta.getPrimaryKey());
+        template = template.replaceAll("&primary-key-type&", meta.getPrimaryKeyType());
+
         template = template.replaceAll("&import-item&", meta.getImportText());
         return template;
     }

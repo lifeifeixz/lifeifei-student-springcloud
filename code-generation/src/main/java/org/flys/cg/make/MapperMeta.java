@@ -7,6 +7,7 @@ import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TypeConverter;
 import org.flys.cg.util.UtilClassSplicing;
 
+import javax.rmi.CORBA.Util;
 import java.util.List;
 
 public class MapperMeta {
@@ -28,8 +29,18 @@ public class MapperMeta {
         this.packageText = context.getPackageRoot() + ".mapper;";
         this.importText = "import " + context.getPackageRoot() + ".model." + modelClassName + ";\n";
         List<Column> columns = table.getColumns();
+        boolean hasPrimary = false;
         for (Column column : columns) {
             if (column.isPrimaryKey()) {
+                hasPrimary = true;
+                this.primaryKey = UtilClassSplicing.convertColumnToField(column.getName());
+                this.primaryKeyType = TypeConverter.exchange(column.getType());
+            }
+        }
+        /*如果没有主键的话，则临时指定一位*/
+        if (!hasPrimary) {
+            if (columns.size() > 0) {
+                Column column = columns.get(0);
                 this.primaryKey = UtilClassSplicing.convertColumnToField(column.getName());
                 this.primaryKeyType = TypeConverter.exchange(column.getType());
             }

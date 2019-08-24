@@ -17,6 +17,14 @@ public class TypeConverter {
         typeDictionaries.put("boolean", "boolean");
         typeDictionaries.put("double", "double");
         typeDictionaries.put("float", "float");
+        typeDictionaries.put("tinyint", "int");
+        typeDictionaries.put("timestamp", "long");
+        typeDictionaries.put("date", "java.util.Date");
+        typeDictionaries.put("blob", "String");
+        typeDictionaries.put("text", "String");
+        typeDictionaries.put("varbinary","String");
+        typeDictionaries.put("smallint","int");
+        typeDictionaries.put("decimal","java.math.BigDecimal");
     }
 
 

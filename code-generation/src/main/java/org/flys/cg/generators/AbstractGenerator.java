@@ -33,6 +33,11 @@ public abstract class AbstractGenerator implements Generator, SupportPrintGenera
         this.packageName = packageName;
     }
 
+    protected String loadResource(String location) {
+        String resource = FileUtil.readFile(resourceRoot + location);
+        return resource;
+    }
+
     @Override
     public void print(MetaTable table) {
         try {
