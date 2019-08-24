@@ -1,8 +1,8 @@
 package org.flys.cg.builder;
 
 import org.flys.cg.Column;
-import org.flys.cg.TypeConverter;
-import org.flys.cg.UtilClassSplicing;
+import org.flys.cg.util.TypeConverter;
+import org.flys.cg.util.UtilClassSplicing;
 
 /**
  * 属性建造者
@@ -12,7 +12,8 @@ import org.flys.cg.UtilClassSplicing;
 public class JavaFieldCodeBuilder implements JavaCodeBuilder {
     @Override
     public String build(Column column) {
-        return build(UtilClassSplicing.convertColumnToField(column.getName()), TypeConverter.exchange(column.getType()));
+        return "/**" + column.getNotes() + "*/\n"
+                + build(UtilClassSplicing.convertColumnToField(column.getName()), TypeConverter.exchange(column.getType()));
     }
 
     @Override

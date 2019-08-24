@@ -1,4 +1,4 @@
-package org.flys.cg;
+package org.flys.cg.util;
 
 import java.util.HashMap;
 import java.util.Map;

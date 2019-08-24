@@ -1,14 +1,13 @@
 package org.flys.cg.generators;
 
 import javassist.*;
-import org.flys.cg.Column;
-import org.flys.cg.Generator;
-import org.flys.cg.MetaTable;
-import org.flys.cg.UtilClassSplicing;
+import org.flys.cg.*;
 import org.flys.cg.builder.JavaCodeBuilder;
 import org.flys.cg.builder.JavaDataMethodBuilderInterface;
 import org.flys.cg.builder.JavaDataMethodCodeBuilder;
 import org.flys.cg.builder.JavaFieldCodeBuilder;
+import org.flys.cg.util.StringUtil;
+import org.flys.cg.util.UtilClassSplicing;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,19 +15,29 @@ import java.util.List;
 /**
  * @author feifei.li
  */
-public class GeneratorModel extends AbstractGenerator implements Generator {
+@SuppressWarnings("all")
+public class ModelGenerator extends AbstractGenerator implements Generator {
     JavaCodeBuilder fieldBuilder = new JavaFieldCodeBuilder();
     JavaDataMethodBuilderInterface dataMethodBuilder = new JavaDataMethodCodeBuilder();
 
-    public GeneratorModel(String packageName) {
+    public ModelGenerator(String packageName) {
         super(packageName);
     }
 
     @Override
-    public String doGenerate(MetaTable metaTable) {
+    public Product doGenerate(MetaTable metaTable) {
+        String doGenerate_ = doGenerate_(metaTable);
+        Product product = new Product();
+        product.setName(StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(metaTable.getTableName())));
+        return product;
+    }
+
+    private String doGenerate_(MetaTable metaTable) {
+        this.layer = "model";
         ClassPool pool = ClassPool.getDefault();
         String className = UtilClassSplicing.convertColumnToField(metaTable.getTableName());
-        CtClass ct = pool.makeClass(packageName + "." + className);
+        className = StringUtil.acronymUpperCase(className);
+        CtClass ct = pool.makeClass(context.getPackageRoot() + ".model." + className);
         List<Column> columns = metaTable.getColumns();
         for (Column column : columns) {
 
@@ -57,7 +66,10 @@ public class GeneratorModel extends AbstractGenerator implements Generator {
     }
 
     public static void main(String[] args) {
-        GeneratorModel com = new GeneratorModel("com");
+        Context context = Context.getInstance();
+        context.setOutputPath("G:\\workspaces\\springcloud\\code-generation\\src\\main\\java");
+        context.setPackageRoot("com.cg.test");
+        BasedTemplateMapperGenerator com = new BasedTemplateMapperGenerator(null);
         MetaTable metaTable = new MetaTable("user");
         List<Column> columns = metaTable.getColumns();
         Column column = new Column();
@@ -66,6 +78,14 @@ public class GeneratorModel extends AbstractGenerator implements Generator {
         column.setType("VARCHAR");
         column.setNotes("用户姓名,真实的姓名");
         columns.add(column);
+
+        Column column0 = new Column();
+        column0.setName("user_id");
+        column0.setLength(10);
+        column0.setType("bigint");
+        column0.setNotes("用户id");
+        column0.setPrimaryKey(true);
+        columns.add(column0);
 
         Column column2 = new Column();
         column2.setName("age");
@@ -81,7 +101,8 @@ public class GeneratorModel extends AbstractGenerator implements Generator {
         column3.setNotes("出生日期");
         columns.add(column3);
 
-        String generate = com.doGenerate(metaTable);
+        String generate = null;
+        com.print(metaTable);
         System.out.println(generate);
     }
 

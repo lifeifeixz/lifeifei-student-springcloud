@@ -1,7 +1,7 @@
 package org.flys.cg;
 
 import javassist.CannotCompileException;
-import org.flys.cg.generators.GeneratorModel;
+import org.flys.cg.generators.ModelGenerator;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,20 +26,25 @@ public class DfaultConsoleImpl implements Console {
 
     @Override
     public void invoke() throws CannotCompileException, IOException {
+
+    }
+
+   /* @Override*/
+  /*  public void invoke() throws CannotCompileException, IOException {
         List<String> tables = dataBaseConnection.getTables();
         for (String tableName : tables) {
             doInvoke(tableName);
         }
-    }
+    }*/
 
-    protected String doInvoke(String tableName) throws CannotCompileException, IOException {
+   /* protected String doInvoke(String tableName) throws CannotCompileException, IOException {
         MetaTable table = dataBaseConnection.getTable(tableName);
         String mapper = invokeMapper(table);
         return null;
-    }
+    }*/
 
-    private String invokeMapper(MetaTable metaTable) throws CannotCompileException, IOException {
-        Generator generator = new GeneratorModel(packageRoot);
+    /*private String invokeMapper(MetaTable metaTable) throws CannotCompileException, IOException {
+        Generator generator = new ModelGenerator(packageRoot);
         return generator.doGenerate(metaTable);
     }
 
@@ -66,5 +71,5 @@ public class DfaultConsoleImpl implements Console {
     private String invokeHtml(MetaTable metaTable) throws CannotCompileException, IOException {
         Generator generator = null;
         return generator.doGenerate(metaTable);
-    }
+    }*/
 }

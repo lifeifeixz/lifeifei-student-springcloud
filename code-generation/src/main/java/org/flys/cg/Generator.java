@@ -1,6 +1,7 @@
 package org.flys.cg;
 
-import javassist.CannotCompileException;
+
+import org.flys.cg.generators.Product;
 
 import java.io.IOException;
 
@@ -15,5 +16,5 @@ public interface Generator {
      * @param metaTable
      * @return
      */
-    String doGenerate(MetaTable metaTable) throws CannotCompileException, IOException;
+    Product doGenerate(MetaTable metaTable) throws IOException;
 }

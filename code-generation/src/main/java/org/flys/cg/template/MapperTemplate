@@ -1,0 +1,38 @@
+package <package>org.flys.cg.template</package>;
+
+<import-package>import org.apache.catalina.User;</import-package>
+public interface <class-name>TemplateMapper</class-name> {
+
+/**
+* 根据id删除记录
+*
+* @param id
+* @return
+*/
+int delete(long id);
+
+/**
+* 添加记录
+*
+* @param user
+* @return
+*/
+int save(<model-full-name></model-full-name> model);
+
+/**
+* 根据id修改记录
+*
+* @param id
+* @param user
+* @return
+*/
+int updateById(long id, <model-full-name></model-full-name> model);
+
+/**
+* 根据id查询记录
+*
+* @param id
+* @return
+*/
+<model-full-name></model-full-name> findById(long id);
+}

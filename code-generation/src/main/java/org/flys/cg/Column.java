@@ -4,14 +4,14 @@ package org.flys.cg;
  * @author feifei.li
  */
 public class Column {
-    private String name;
-    private String type;
-    private int length;
-    private boolean isPrimaryKey;
-    private boolean notEmpty;
-    private boolean unsigned;
-    private boolean zerofill;
-    private String notes;
+    protected String name;
+    protected String type;
+    protected int length;
+    protected boolean isPrimaryKey;
+    protected boolean notEmpty;
+    protected boolean unsigned;
+    protected boolean zerofill;
+    protected String notes;
 
     public String getName() {
         return name;

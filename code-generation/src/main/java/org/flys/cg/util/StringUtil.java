@@ -1,4 +1,4 @@
-package org.flys.cg;
+package org.flys.cg.util;
 
 public class StringUtil {
 

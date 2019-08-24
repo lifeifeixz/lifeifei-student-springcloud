@@ -7,8 +7,11 @@ import java.util.List;
  * @author feifei.li
  */
 public class MetaTable {
-    private String tableName;
-    private List<Column> columns;
+    protected String tableName;
+    protected List<Column> columns;
+
+    public MetaTable() {
+    }
 
     public MetaTable(String tableName) {
         this.tableName = tableName;

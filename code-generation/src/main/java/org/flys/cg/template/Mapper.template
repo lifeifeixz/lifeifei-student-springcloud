@@ -1,0 +1,39 @@
+package &package&
+
+&import-item&
+
+public interface &class-name& {
+
+    /**
+     * 根据id删除记录
+     *
+     * @param &primary-key&
+     * @return
+     */
+    int deleteById(&primary-key-type& &primary-key&);
+
+    /**
+     * 添加记录
+     *
+     * @param model
+     * @return
+     */
+    int save(&model-class-name& model);
+
+    /**
+     * 根据id修改记录
+     *
+     * @param &primary-key&
+     * @param model
+     * @return
+     */
+    int updateById(&primary-key-type& &primary-key&, &model-class-name& model);
+
+    /**
+     * 根据id查询记录
+     *
+     * @param &primary-key&
+     * @return
+     */
+    &model-class-name& findById(&primary-key-type& &primary-key&);
+}
