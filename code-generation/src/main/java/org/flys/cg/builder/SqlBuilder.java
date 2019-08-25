@@ -1,5 +1,9 @@
 package org.flys.cg.builder;
 
 public interface SqlBuilder {
-    String build();
+    String buildFindAll();
+    String buildFindOne();
+    String buildDelete();
+    String buildUpdate();
+    String buildSave();
 }

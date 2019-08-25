@@ -26,7 +26,7 @@ public class MapperMeta {
         String modelClassName = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(table.getTableName()));
         this.className = modelClassName + "Mapper";
         this.modelName = modelClassName;
-        this.packageText = context.getPackageRoot() + ".mapper;";
+        this.packageText = context.getPackageRoot() + ".mapper";
         this.importText = "import " + context.getPackageRoot() + ".model." + modelClassName + ";\n";
         List<Column> columns = table.getColumns();
         boolean hasPrimary = false;

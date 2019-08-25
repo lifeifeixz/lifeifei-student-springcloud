@@ -1,6 +1,7 @@
 package &package&
 
 &import-item&
+import java.util.List;
 
 public interface &class-name& {
 
@@ -10,7 +11,7 @@ public interface &class-name& {
      * @param &primary-key&
      * @return
      */
-    int deleteById(&primary-key-type& &primary-key&);
+    int delete(&primary-key-type& &primary-key&);
 
     /**
      * 添加记录
@@ -27,7 +28,7 @@ public interface &class-name& {
      * @param model
      * @return
      */
-    int updateById(&primary-key-type& &primary-key&, &model-class-name& model);
+    int update(&primary-key-type& &primary-key&, &model-class-name& model);
 
     /**
      * 根据id查询记录
@@ -35,5 +36,13 @@ public interface &class-name& {
      * @param &primary-key&
      * @return
      */
-    &model-class-name& findById(&primary-key-type& &primary-key&);
+    &model-class-name& findOne(&primary-key-type& &primary-key&);
+
+    /**
+     * 查询所有
+     *
+     * @param model
+     * @return
+     */
+    List<&model-class-name&> findAll(&model-class-name& model);
 }

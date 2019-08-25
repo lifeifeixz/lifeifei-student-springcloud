@@ -35,7 +35,7 @@ public class BasedTemplateMapperGenerator extends AbstractGenerator implements G
     }
 
     private String make(String template, MapperMeta meta) {
-        template = template.replaceAll("&package&", meta.getPackageText());
+        template = template.replaceAll("&package&", meta.getPackageText() + ";");
         template = template.replaceAll("&class-name&", meta.getClassName());
         template = template.replaceAll("&model-class-name&", meta.getModelName());
         template = template.replaceAll("&primary-key&", meta.getPrimaryKey());
@@ -43,46 +43,5 @@ public class BasedTemplateMapperGenerator extends AbstractGenerator implements G
 
         template = template.replaceAll("&import-item&", meta.getImportText());
         return template;
-    }
-
-    public static void main(String[] args) {
-        Context context = Context.getInstance();
-        context.setPackageRoot("com.cg.test");
-        Generator com = new BasedTemplateMapperGenerator("com.mapper");
-        MetaTable metaTable = new MetaTable("user");
-        List<Column> columns = metaTable.getColumns();
-        Column column = new Column();
-        column.setName("name");
-        column.setLength(255);
-        column.setType("VARCHAR");
-        column.setNotes("用户姓名,真实的姓名");
-        columns.add(column);
-
-        Column column2 = new Column();
-        column2.setName("age");
-        column2.setLength(6);
-        column2.setType("int");
-        column2.setNotes("用户年龄");
-        columns.add(column2);
-
-        Column column3 = new Column();
-        column3.setName("birdth");
-        column3.setLength(255);
-        column3.setType("DATETIME");
-        column3.setNotes("出生日期");
-        columns.add(column3);
-
-        Column column4 = new Column();
-        column4.setName("id");
-        column4.setLength(10);
-        column4.setType("bigint");
-        column4.setNotes("id");
-        column4.setPrimaryKey(true);
-        columns.add(column4);
-
-
-        String generate = null;
-        ((BasedTemplateMapperGenerator) com).print(metaTable);
-        System.out.println(generate);
     }
 }

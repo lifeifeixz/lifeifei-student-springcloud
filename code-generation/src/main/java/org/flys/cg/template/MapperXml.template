@@ -8,15 +8,20 @@
         &save-sql&
     </insert>
 
-    <delete id="deleteById">
+    <delete id="delete">
         &delete-sql&
     </delete>
 
-    <update id="updateById" parameterType="&full-model-class&">
+    <update id="update" parameterType="&full-model-class&">
         &update-sql&
     </update>
-    <select id="findById" parameterType="&primary-key-type&"
+    <select id="findOne" parameterType="&primary-key-type&"
             resultType="&full-model-class&">
-        &select-sql&
+        &select-sql-findOne&
     </select>
+
+    <select id="findAll" parameterType="&full-model-class&"
+                resultType="&full-model-class&">
+            &select-sql-findAll&
+        </select>
 </mapper>
