@@ -10,7 +10,7 @@ import org.flys.cg.meta.Column;
 import org.flys.cg.meta.Context;
 import org.flys.cg.meta.MetaTable;
 import org.flys.cg.util.StringUtil;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,14 +31,14 @@ public class ModelGenerator extends AbstractGenerator implements Generator {
     public Product doGenerate(MetaTable metaTable) {
         String doGenerate_ = doGenerate_(metaTable);
         Product product = new Product();
-        product.setName(StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(metaTable.getTableName())));
+        product.setName(StringUtil.acronymUpperCase(ColumnSplicing.convertColumnToField(metaTable.getTableName())));
         return product;
     }
 
     private String doGenerate_(MetaTable metaTable) {
         this.layer = "model";
         ClassPool pool = ClassPool.getDefault();
-        String className = UtilClassSplicing.convertColumnToField(metaTable.getTableName());
+        String className = ColumnSplicing.convertColumnToField(metaTable.getTableName());
         className = StringUtil.acronymUpperCase(className);
         CtClass ct = pool.makeClass(context.getPackageRoot() + ".model." + className);
         List<Column> columns = metaTable.getColumns();

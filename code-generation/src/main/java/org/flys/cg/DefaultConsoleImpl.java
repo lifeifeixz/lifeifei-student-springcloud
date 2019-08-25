@@ -49,6 +49,9 @@ public class DefaultConsoleImpl implements Console {
             Generator voGenerator = new HandWritingVoGenerator(null);
             voGenerator.print(metaTable);
 
+            Generator controllerGenerator = new HandwritingControllerGenerator(null);
+            controllerGenerator.print(metaTable);
+
         }
 
     }

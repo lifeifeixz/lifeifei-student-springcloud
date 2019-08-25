@@ -5,7 +5,7 @@ import org.flys.cg.meta.MetaTable;
 import org.flys.cg.meta.ModelMeta;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TinyIde;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 /**
  * 手写service
@@ -25,7 +25,7 @@ public class HandwritingServiceGenerator extends AbstractGenerator implements Ge
         modelMeta = new ModelMeta(metaTable);
         this.metaTable = metaTable;
         super.layer = "service";
-        String serviceName = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(metaTable.getTableName()));
+        String serviceName = StringUtil.acronymUpperCase(ColumnSplicing.convertColumnToField(metaTable.getTableName()));
         serviceName = serviceName + "Service";
         this.packageName = context.getPackageRoot() + "." + layer;
         String code = writer(serviceName);
@@ -47,7 +47,7 @@ public class HandwritingServiceGenerator extends AbstractGenerator implements Ge
         code.appendLine("     /**\n" +
                 "     * 修改\n" +
                 "     *\n" +
-                "     * @param erpEmp\n" +
+                "     * @param " + StringUtil.acronymLowercase(current.getModelClassName()) + "\n" +
                 "     * @return\n" +
                 "     */");
         code.appendLineEnd("\tint update(" + current.getModelClassName() + " " + StringUtil.acronymLowercase(current.getModelClassName()) + ")");

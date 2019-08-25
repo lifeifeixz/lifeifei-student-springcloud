@@ -4,17 +4,20 @@ import org.flys.cg.*;
 import org.flys.cg.meta.Context;
 import org.flys.cg.meta.Current;
 import org.flys.cg.meta.MetaTable;
+import org.flys.cg.meta.PackageOrganizer;
 import org.flys.cg.util.FileUtil;
 import org.flys.cg.util.StringUtil;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 
 /**
  * @author feifei.li
  */
-public abstract class AbstractGenerator implements Generator {
+public abstract class AbstractGenerator implements Generator, PackageOrganizer {
     protected String layer;
     protected Current current = Current.current;
 
@@ -47,8 +50,23 @@ public abstract class AbstractGenerator implements Generator {
         String packagePath = context.getPackageRoot() + "." + layer;
         String path = packagePath.replaceAll("\\.", Matcher.quoteReplacement(File.separator));
         String outPath = context.getOutputPath() + File.separator + path + File.separator;
-        String fileName = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(product.getName()));
+        String fileName = StringUtil.acronymUpperCase(ColumnSplicing.convertColumnToField(product.getName()));
         FileUtil.writeFile(outPath, fileName, product.getContext());
+    }
+
+    private static Map<String, String> packageCache = new HashMap<>();
+
+    @Override
+    public void join(String singleName, String fullClassName) {
+        packageCache.put(singleName, fullClassName);
+    }
+
+    @Override
+    public String getFullClassName(String singleName) {
+        if (!packageCache.containsKey(singleName)) {
+            throw new RuntimeException("未发现 " + singleName + " 类的包的注册信息");
+        }
+        return packageCache.get(singleName);
     }
 
     public static void main(String[] args) {

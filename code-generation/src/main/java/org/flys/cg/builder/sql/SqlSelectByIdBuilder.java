@@ -2,7 +2,7 @@ package org.flys.cg.builder.sql;
 
 import org.flys.cg.meta.Column;
 import org.flys.cg.builder.SqlBuilder;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class SqlSelectByIdBuilder implements SqlBuilder {
         sql.append(" where 1=1 ");
         for (Column column : columns) {
             sql.append("<if test=\"param." + column.getName() + "!=null and param." + column.getName() + "!=''\">\n" +
-                    "    " + column.getName() + "=#{param." + UtilClassSplicing.convertColumnToField(column.getName()) + "}\n" +
+                    "    " + column.getName() + "=#{param." + ColumnSplicing.convertColumnToField(column.getName()) + "}\n" +
                     "</if>");
         }
         return sql.toString();
@@ -46,14 +46,14 @@ public class SqlSelectByIdBuilder implements SqlBuilder {
         sql.append("select * from ");
         sql.append(this.tableName);
         sql.append(" where ");
-        sql.append(this.primaryKey + "=#{" + UtilClassSplicing.convertColumnToField(this.primaryKey) + "}");
+        sql.append(this.primaryKey + "=#{" + ColumnSplicing.convertColumnToField(this.primaryKey) + "}");
         return sql.toString();
     }
 
     @Override
     public String buildDelete() {
         StringBuffer sql = new StringBuffer();
-        sql.append("DELETE FROM `mes_parameter` WHERE " + this.primaryKey + "=#{" + UtilClassSplicing.convertColumnToField(this.primaryKey) + "}");
+        sql.append("DELETE FROM `mes_parameter` WHERE " + this.primaryKey + "=#{" + ColumnSplicing.convertColumnToField(this.primaryKey) + "}");
         return sql.toString();
     }
 
@@ -72,10 +72,10 @@ public class SqlSelectByIdBuilder implements SqlBuilder {
             Column column = this.columns.get(i);
             if (i == 0) {
                 temp_c += "`" + column.getName() + "`";
-                temp_v += "#{" + UtilClassSplicing.convertColumnToField(column.getName()) + "}";
+                temp_v += "#{" + ColumnSplicing.convertColumnToField(column.getName()) + "}";
             } else {
                 temp_c += ",`" + column.getName() + "`";
-                temp_v += ",#{" + UtilClassSplicing.convertColumnToField(column.getName()) + "}";
+                temp_v += ",#{" + ColumnSplicing.convertColumnToField(column.getName()) + "}";
             }
         }
         c = c.replace("&c&", temp_c);

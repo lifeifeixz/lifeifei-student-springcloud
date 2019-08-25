@@ -3,7 +3,7 @@ package org.flys.cg.util;
 /**
  * @author feifei.li
  */
-public class UtilClassSplicing {
+public class ColumnSplicing {
     public static String convertColumnToField(String column) {
         if (column == null || column.length() == 0) {
             throw new RuntimeException("字符串为空，不可转换");
@@ -22,6 +22,6 @@ public class UtilClassSplicing {
     }
 
     public static void main(String[] args) {
-        System.out.println(UtilClassSplicing.convertColumnToField("mes_v2_demo"));
+        System.out.println(ColumnSplicing.convertColumnToField("mes_v2_demo"));
     }
 }

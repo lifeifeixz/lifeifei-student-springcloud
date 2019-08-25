@@ -1,15 +1,13 @@
 package org.flys.cg.generators;
 
 import org.flys.cg.Generator;
-import org.flys.cg.builder.JavaCodeBuilder;
 import org.flys.cg.builder.JavaDataMethodBuilderInterface;
 import org.flys.cg.builder.JavaDataMethodCodeBuilder;
-import org.flys.cg.builder.JavaMethodCodeBuilder;
 import org.flys.cg.meta.Column;
 import org.flys.cg.meta.MetaTable;
 import org.flys.cg.util.TinyIde;
 import org.flys.cg.util.TypeConverter;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,7 +39,7 @@ public class HandWritingVoGenerator extends AbstractGenerator implements Generat
         vo.appendLine("public class " + voClassName + " {");
         String getAndSet = "";
         for (Column column : metaTable.getColumns()) {
-            String field = UtilClassSplicing.convertColumnToField(column.getName());
+            String field = ColumnSplicing.convertColumnToField(column.getName());
             String validator = "";
             if (column.isNotEmpty()) {
                 if (TypeConverter.exchange(column.getType()).equals("String")) {
@@ -65,6 +63,8 @@ public class HandWritingVoGenerator extends AbstractGenerator implements Generat
             importText += "import " + imp + ";\n";
         }
         text = text.replace("&import&", importText);
+        current.setVoClassName(voClassName);
+        current.setFullVoClassName(packageName + SPOT + voClassName);
         return new Product(voClassName + ".java", text);
     }
 }

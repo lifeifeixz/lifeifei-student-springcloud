@@ -2,7 +2,7 @@ package org.flys.cg.meta;
 
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TypeConverter;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class MapperMeta {
 
     public MapperMeta(MetaTable table) {
         Context context = Context.getInstance();
-        String modelClassName = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(table.getTableName()));
+        String modelClassName = StringUtil.acronymUpperCase(ColumnSplicing.convertColumnToField(table.getTableName()));
         this.className = modelClassName + "Mapper";
         this.modelName = modelClassName;
         this.packageText = context.getPackageRoot() + ".mapper";
@@ -29,7 +29,7 @@ public class MapperMeta {
         for (Column column : columns) {
             if (column.isPrimaryKey()) {
                 hasPrimary = true;
-                this.primaryKey = UtilClassSplicing.convertColumnToField(column.getName());
+                this.primaryKey = ColumnSplicing.convertColumnToField(column.getName());
                 this.primaryKeyType = TypeConverter.exchange(column.getType());
             }
         }
@@ -37,7 +37,7 @@ public class MapperMeta {
         if (!hasPrimary) {
             if (columns.size() > 0) {
                 Column column = columns.get(0);
-                this.primaryKey = UtilClassSplicing.convertColumnToField(column.getName());
+                this.primaryKey = ColumnSplicing.convertColumnToField(column.getName());
                 this.primaryKeyType = TypeConverter.exchange(column.getType());
             }
         }

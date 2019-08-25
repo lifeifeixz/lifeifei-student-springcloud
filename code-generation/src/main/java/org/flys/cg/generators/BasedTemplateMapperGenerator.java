@@ -28,6 +28,10 @@ public class BasedTemplateMapperGenerator extends AbstractGenerator implements G
         product.setContext(text);
         String fullClassName = mapperMeta.getPackageText() + "." + mapperMeta.getClassName();
 
+        /*设置主键*/
+        current.setPrimaryKey(mapperMeta.getPrimaryKey());
+        current.setPrimaryKeyType(mapperMeta.getPrimaryKeyType());
+
         /*封装结果*/
         current.setMapperClassName(mapperMeta.getClassName());
         current.setFullMapperClassName(fullClassName);

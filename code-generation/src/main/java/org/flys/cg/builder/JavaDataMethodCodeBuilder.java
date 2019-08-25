@@ -3,7 +3,7 @@ package org.flys.cg.builder;
 import org.flys.cg.meta.Column;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TypeConverter;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 /**
  * @author feifei.li
@@ -12,7 +12,7 @@ public class JavaDataMethodCodeBuilder implements JavaDataMethodBuilderInterface
 
     @Override
     public String buildGet(Column column) {
-        return buildGet(UtilClassSplicing.convertColumnToField(column.getName()), TypeConverter.exchange(column.getType()));
+        return buildGet(ColumnSplicing.convertColumnToField(column.getName()), TypeConverter.exchange(column.getType()));
     }
 
     @Override
@@ -22,7 +22,7 @@ public class JavaDataMethodCodeBuilder implements JavaDataMethodBuilderInterface
 
     @Override
     public String buildSet(Column column) {
-        return buildSet(UtilClassSplicing.convertColumnToField(column.getName()), TypeConverter.exchange(column.getType()));
+        return buildSet(ColumnSplicing.convertColumnToField(column.getName()), TypeConverter.exchange(column.getType()));
     }
 
     @Override

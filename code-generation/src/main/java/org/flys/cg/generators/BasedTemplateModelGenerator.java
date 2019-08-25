@@ -10,7 +10,7 @@ import org.flys.cg.builder.JavaFieldCodeBuilder;
 import org.flys.cg.util.FileUtil;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TypeConverter;
-import org.flys.cg.util.UtilClassSplicing;
+import org.flys.cg.util.ColumnSplicing;
 
 import java.util.List;
 
@@ -29,12 +29,12 @@ public class BasedTemplateModelGenerator extends AbstractGenerator implements Ge
     public Product doGenerate(MetaTable metaTable) {
         this.layer = "model";
         String resource = FileUtil.readFile(resourceRoot + "Model.template");
-        String className = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(metaTable.getTableName()));
+        String className = StringUtil.acronymUpperCase(ColumnSplicing.convertColumnToField(metaTable.getTableName()));
         resource.replace(CLASS_NAME, className);
         StringBuffer fieldStr = new StringBuffer();
         List<Column> columns = metaTable.getColumns();
         for (Column column : columns) {
-            String name = UtilClassSplicing.convertColumnToField(column.getName());
+            String name = ColumnSplicing.convertColumnToField(column.getName());
             String type = TypeConverter.exchange(column.getType());
             String field = fieldBuilder.build(column);
             fieldStr.append(field);

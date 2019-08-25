@@ -13,6 +13,8 @@ public class Current {
     private String requestMapping;
     private String voClassName;
     private String fullVoClassName;
+    private String primaryKey;
+    private String primaryKeyType;
 
     private Current() {
     }
@@ -103,5 +105,21 @@ public class Current {
 
     public void setFullVoClassName(String fullVoClassName) {
         this.fullVoClassName = fullVoClassName;
+    }
+
+    public String getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public void setPrimaryKey(String primaryKey) {
+        this.primaryKey = primaryKey;
+    }
+
+    public String getPrimaryKeyType() {
+        return primaryKeyType;
+    }
+
+    public void setPrimaryKeyType(String primaryKeyType) {
+        this.primaryKeyType = primaryKeyType;
     }
 }
