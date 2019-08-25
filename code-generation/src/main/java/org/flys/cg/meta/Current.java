@@ -11,6 +11,8 @@ public class Current {
     private String controllerClassName;
     private String fullControllerClassName;
     private String requestMapping;
+    private String voClassName;
+    private String fullVoClassName;
 
     private Current() {
     }
@@ -85,5 +87,21 @@ public class Current {
 
     public void setRequestMapping(String requestMapping) {
         this.requestMapping = requestMapping;
+    }
+
+    public String getVoClassName() {
+        return voClassName;
+    }
+
+    public void setVoClassName(String voClassName) {
+        this.voClassName = voClassName;
+    }
+
+    public String getFullVoClassName() {
+        return fullVoClassName;
+    }
+
+    public void setFullVoClassName(String fullVoClassName) {
+        this.fullVoClassName = fullVoClassName;
     }
 }

@@ -1,10 +1,7 @@
 package org.flys.cg;
 
 import javassist.CannotCompileException;
-import org.flys.cg.generators.BasedTemplateMapperGenerator;
-import org.flys.cg.generators.BasedTemplateMapperXmlGenerator;
-import org.flys.cg.generators.BasedTemplateModelGenerator;
-import org.flys.cg.generators.HandwritingServiceGenerator;
+import org.flys.cg.generators.*;
 import org.flys.cg.meta.Context;
 import org.flys.cg.meta.MetaTable;
 import org.flys.cg.resource.MySqlMeterial;
@@ -48,6 +45,10 @@ public class DefaultConsoleImpl implements Console {
 
             Generator serviceGenerator = new HandwritingServiceGenerator(null);
             serviceGenerator.print(metaTable);
+
+            Generator voGenerator = new HandWritingVoGenerator(null);
+            voGenerator.print(metaTable);
+
         }
 
     }

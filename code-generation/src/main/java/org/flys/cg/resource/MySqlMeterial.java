@@ -58,7 +58,7 @@ public class MySqlMeterial implements RawMaterial {
                 column.setNotes(resultSet.getString("COLUMN_COMMENT"));
                 column.setType(resultSet.getString("data_type"));
                 column.setLength(resultSet.getInt("CHARACTER_MAXIMUM_LENGTH"));
-                column.setNotEmpty(!"NO".equals(resultSet.getString("is_nullable")));
+                column.setNotEmpty("NO".equals(resultSet.getString("is_nullable")));
                 column.setPrimaryKey("PRI".equals(resultSet.getString("COLUMN_KEY")));
                 columns.add(column);
             }
