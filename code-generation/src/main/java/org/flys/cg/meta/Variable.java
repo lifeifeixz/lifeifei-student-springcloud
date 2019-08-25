@@ -1,4 +1,4 @@
-package org.flys.cg;
+package org.flys.cg.meta;
 
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TypeConverter;

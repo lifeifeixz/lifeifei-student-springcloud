@@ -1,10 +1,10 @@
 package org.flys.cg.generators;
 
 import org.flys.cg.*;
-import org.flys.cg.make.MapperMeta;
+import org.flys.cg.meta.MapperMeta;
+import org.flys.cg.meta.MetaTable;
 import org.flys.cg.util.FileUtil;
 
-import java.util.List;
 
 /**
  * 基于模板的mapper代码生成器

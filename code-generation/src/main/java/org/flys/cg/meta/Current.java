@@ -1,4 +1,4 @@
-package org.flys.cg;
+package org.flys.cg.meta;
 
 public class Current {
     public static final Current current = new Current();
@@ -10,6 +10,7 @@ public class Current {
     private String fullServiceClassName;
     private String controllerClassName;
     private String fullControllerClassName;
+    private String requestMapping;
 
     private Current() {
     }
@@ -76,5 +77,13 @@ public class Current {
 
     public void setFullControllerClassName(String fullControllerClassName) {
         this.fullControllerClassName = fullControllerClassName;
+    }
+
+    public String getRequestMapping() {
+        return requestMapping;
+    }
+
+    public void setRequestMapping(String requestMapping) {
+        this.requestMapping = requestMapping;
     }
 }

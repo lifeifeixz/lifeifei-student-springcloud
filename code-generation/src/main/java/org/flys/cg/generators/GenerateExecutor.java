@@ -1,7 +1,7 @@
 package org.flys.cg.generators;
 
 import javassist.*;
-import org.flys.cg.Column;
+import org.flys.cg.meta.Column;
 
 import java.io.IOException;
 import java.util.List;

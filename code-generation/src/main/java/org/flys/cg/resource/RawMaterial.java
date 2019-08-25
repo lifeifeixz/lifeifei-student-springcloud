@@ -1,6 +1,6 @@
 package org.flys.cg.resource;
 
-import org.flys.cg.MetaTable;
+import org.flys.cg.meta.MetaTable;
 
 import java.util.List;
 

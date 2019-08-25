@@ -5,6 +5,14 @@ public class Product {
     private String name;
     private String context;
 
+    public Product() {
+    }
+
+    public Product(String name, String context) {
+        this.name = name;
+        this.context = context;
+    }
+
     public String getName() {
         return name;
     }

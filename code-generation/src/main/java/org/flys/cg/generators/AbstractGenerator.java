@@ -1,18 +1,20 @@
 package org.flys.cg.generators;
 
 import org.flys.cg.*;
+import org.flys.cg.meta.Context;
+import org.flys.cg.meta.Current;
+import org.flys.cg.meta.MetaTable;
 import org.flys.cg.util.FileUtil;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.UtilClassSplicing;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.regex.Matcher;
 
 /**
  * @author feifei.li
  */
-public abstract class AbstractGenerator implements Generator, SupportPrintGenerator {
+public abstract class AbstractGenerator implements Generator {
     protected String layer;
     protected Current current = Current.current;
 
@@ -40,17 +42,13 @@ public abstract class AbstractGenerator implements Generator, SupportPrintGenera
 
     @Override
     public void print(MetaTable table) {
-        try {
-            Product product = this.doGenerate(table);
-            /*解析包*/
-            String packagePath = context.getPackageRoot() + "." + layer;
-            String path = packagePath.replaceAll("\\.", Matcher.quoteReplacement(File.separator));
-            String outPath = context.getOutputPath() + File.separator + path + File.separator;
-            String fileName = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(product.getName()));
-            FileUtil.writeFile(outPath, fileName, product.getContext());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Product product = this.doGenerate(table);
+        /*解析包*/
+        String packagePath = context.getPackageRoot() + "." + layer;
+        String path = packagePath.replaceAll("\\.", Matcher.quoteReplacement(File.separator));
+        String outPath = context.getOutputPath() + File.separator + path + File.separator;
+        String fileName = StringUtil.acronymUpperCase(UtilClassSplicing.convertColumnToField(product.getName()));
+        FileUtil.writeFile(outPath, fileName, product.getContext());
     }
 
     public static void main(String[] args) {

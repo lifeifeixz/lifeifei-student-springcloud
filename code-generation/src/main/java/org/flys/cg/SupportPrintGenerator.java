@@ -1,5 +1,7 @@
 package org.flys.cg;
 
+import org.flys.cg.meta.MetaTable;
+
 public interface SupportPrintGenerator {
 
     /**

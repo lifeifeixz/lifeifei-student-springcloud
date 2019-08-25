@@ -1,11 +1,11 @@
 package org.flys.cg.generators;
 
 import org.flys.cg.Generator;
-import org.flys.cg.MetaTable;
-import org.flys.cg.PowerfulMetaTable;
+import org.flys.cg.meta.MetaTable;
+import org.flys.cg.meta.PowerfulMetaTable;
 import org.flys.cg.builder.SqlBuilder;
 import org.flys.cg.builder.sql.SqlSelectByIdBuilder;
-import org.flys.cg.make.MapperMeta;
+import org.flys.cg.meta.MapperMeta;
 
 
 public class BasedTemplateMapperXmlGenerator extends AbstractGenerator implements Generator {

@@ -1,4 +1,4 @@
-package org.flys.cg;
+package org.flys.cg.meta;
 
 import java.util.ArrayList;
 import java.util.List;

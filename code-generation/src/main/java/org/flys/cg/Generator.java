@@ -2,13 +2,12 @@ package org.flys.cg;
 
 
 import org.flys.cg.generators.Product;
-
-import java.io.IOException;
+import org.flys.cg.meta.MetaTable;
 
 /**
  * @author feifei.li
  */
-public interface Generator {
+public interface Generator extends SupportPrintGenerator {
 
     /**
      * 生成文件
@@ -16,5 +15,5 @@ public interface Generator {
      * @param metaTable
      * @return
      */
-    Product doGenerate(MetaTable metaTable) throws IOException;
+    Product doGenerate(MetaTable metaTable);
 }

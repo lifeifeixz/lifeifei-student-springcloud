@@ -1,13 +1,9 @@
-package org.flys.cg.make;
+package org.flys.cg.meta;
 
-import org.flys.cg.Column;
-import org.flys.cg.Context;
-import org.flys.cg.MetaTable;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TypeConverter;
 import org.flys.cg.util.UtilClassSplicing;
 
-import javax.rmi.CORBA.Util;
 import java.util.List;
 
 public class MapperMeta {

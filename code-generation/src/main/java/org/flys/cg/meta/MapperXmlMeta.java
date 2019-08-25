@@ -1,6 +1,6 @@
-package org.flys.cg.make;
+package org.flys.cg.meta;
 
-import org.flys.cg.MetaTable;
+import org.flys.cg.meta.MetaTable;
 
 public class MapperXmlMeta extends MetaTable {
     private String fullMapperName;

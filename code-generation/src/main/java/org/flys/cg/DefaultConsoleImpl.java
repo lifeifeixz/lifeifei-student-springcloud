@@ -4,6 +4,9 @@ import javassist.CannotCompileException;
 import org.flys.cg.generators.BasedTemplateMapperGenerator;
 import org.flys.cg.generators.BasedTemplateMapperXmlGenerator;
 import org.flys.cg.generators.BasedTemplateModelGenerator;
+import org.flys.cg.generators.HandwritingServiceGenerator;
+import org.flys.cg.meta.Context;
+import org.flys.cg.meta.MetaTable;
 import org.flys.cg.resource.MySqlMeterial;
 import org.flys.cg.resource.RawMaterial;
 
@@ -33,14 +36,18 @@ public class DefaultConsoleImpl implements Console {
         List<String> tables = rawMaterial.getTables();
         for (String table : tables) {
             MetaTable metaTable = rawMaterial.getTable(table);
-            BasedTemplateModelGenerator modelGenerator = new BasedTemplateModelGenerator(null);
+
+            Generator modelGenerator = new BasedTemplateModelGenerator(null);
             modelGenerator.print(metaTable);
 
-            BasedTemplateMapperGenerator mapperGenerator = new BasedTemplateMapperGenerator(null);
+            Generator mapperGenerator = new BasedTemplateMapperGenerator(null);
             mapperGenerator.print(metaTable);
 
-            BasedTemplateMapperXmlGenerator xmlGenerator = new BasedTemplateMapperXmlGenerator(null);
+            Generator xmlGenerator = new BasedTemplateMapperXmlGenerator(null);
             xmlGenerator.print(metaTable);
+
+            Generator serviceGenerator = new HandwritingServiceGenerator(null);
+            serviceGenerator.print(metaTable);
         }
 
     }

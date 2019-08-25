@@ -1,6 +1,6 @@
 package org.flys.cg.builder;
 
-import org.flys.cg.Column;
+import org.flys.cg.meta.Column;
 
 /**
  * @author feifei.li

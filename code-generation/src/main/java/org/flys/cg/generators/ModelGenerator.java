@@ -6,6 +6,9 @@ import org.flys.cg.builder.JavaCodeBuilder;
 import org.flys.cg.builder.JavaDataMethodBuilderInterface;
 import org.flys.cg.builder.JavaDataMethodCodeBuilder;
 import org.flys.cg.builder.JavaFieldCodeBuilder;
+import org.flys.cg.meta.Column;
+import org.flys.cg.meta.Context;
+import org.flys.cg.meta.MetaTable;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.UtilClassSplicing;
 

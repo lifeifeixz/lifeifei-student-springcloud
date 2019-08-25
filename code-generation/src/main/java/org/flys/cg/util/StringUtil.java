@@ -22,7 +22,11 @@ public class StringUtil {
         return String.valueOf(chars);
     }
 
+    public static String acronymLowercase(String str) {
+        return str.substring(0, 1).toLowerCase() + str.substring(1);
+    }
+
     public static void main(String[] args) {
-        System.out.println(StringUtil.acronymUpperCase("lifeifei"));
+        System.out.println(StringUtil.acronymLowercase("Lifeifei"));
     }
 }

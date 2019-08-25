@@ -1,8 +1,8 @@
 package org.flys.cg.generators;
 
-import org.flys.cg.Column;
+import org.flys.cg.meta.Column;
 import org.flys.cg.Generator;
-import org.flys.cg.MetaTable;
+import org.flys.cg.meta.MetaTable;
 import org.flys.cg.builder.JavaCodeBuilder;
 import org.flys.cg.builder.JavaDataMethodBuilderInterface;
 import org.flys.cg.builder.JavaDataMethodCodeBuilder;
@@ -49,7 +49,7 @@ public class BasedTemplateModelGenerator extends AbstractGenerator implements Ge
             fieldStr.append(getMethod);
             fieldStr.append("\n");
         }
-        String packageName = context.getPackageRoot() + ".model";
+        String packageName = context.getPackageRoot() + "." + layer;
         resource = resource.replace(PACKAGE, packageName).replace(CLASS_NAME, className);
         String classString = resource.replace(DATA, fieldStr.toString());
         Product product = new Product();

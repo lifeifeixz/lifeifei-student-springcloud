@@ -1,7 +1,7 @@
 package org.flys.cg.resource;
 
-import org.flys.cg.Column;
-import org.flys.cg.MetaTable;
+import org.flys.cg.meta.Column;
+import org.flys.cg.meta.MetaTable;
 
 import java.sql.*;
 import java.util.ArrayList;

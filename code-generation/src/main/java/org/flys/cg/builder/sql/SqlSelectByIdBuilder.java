@@ -1,6 +1,6 @@
 package org.flys.cg.builder.sql;
 
-import org.flys.cg.Column;
+import org.flys.cg.meta.Column;
 import org.flys.cg.builder.SqlBuilder;
 import org.flys.cg.util.UtilClassSplicing;
 

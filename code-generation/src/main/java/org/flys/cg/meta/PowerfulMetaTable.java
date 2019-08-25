@@ -1,4 +1,4 @@
-package org.flys.cg;
+package org.flys.cg.meta;
 
 public class PowerfulMetaTable extends MetaTable {
     protected String primaryKey;
@@ -12,7 +12,7 @@ public class PowerfulMetaTable extends MetaTable {
     public PowerfulMetaTable(MetaTable metaTable) {
         boolean falg = false;
         for (Column column : metaTable.columns) {
-            if (column.isPrimaryKey) {
+            if (column.isPrimaryKey()) {
                 falg = true;
                 this.primaryKey = column.getName();
                 this.primaryKeyType = column.getType();
