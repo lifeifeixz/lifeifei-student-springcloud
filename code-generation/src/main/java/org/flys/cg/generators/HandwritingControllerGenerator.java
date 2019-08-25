@@ -31,6 +31,7 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLineEnd("import " + current.getFullVoClassName());
         code.appendLineEnd("import org.springframework.web.bind.annotation.RestController");
         code.appendLineEnd("import org.springframework.web.bind.annotation.RequestMapping");
+        code.appendLineEnd("import org.springframework.beans.factory.annotation.Autowired");
         code.appendLineEnd("import org.springframework.beans.BeanUtils");
         code.appendLineEnd("import java.util.List");
         code.appendLine("");
@@ -40,6 +41,8 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLine("public class " + className + "{");
 
         String serviceVar = StringUtil.acronymLowercase(current.getServiceClassName());
+
+        code.appendLine("@Autowired");
         code.appendLineEnd(current.getServiceClassName() + " " + serviceVar);
         String voVar = StringUtil.acronymLowercase(current.getVoClassName());
         /*方法*/
