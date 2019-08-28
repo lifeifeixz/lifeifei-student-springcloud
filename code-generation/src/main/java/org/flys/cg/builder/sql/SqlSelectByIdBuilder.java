@@ -6,6 +6,9 @@ import org.flys.cg.util.ColumnSplicing;
 
 import java.util.List;
 
+/**
+ * @author feifei.li
+ */
 public class SqlSelectByIdBuilder implements SqlBuilder {
 
     private List<Column> columns;
@@ -33,8 +36,9 @@ public class SqlSelectByIdBuilder implements SqlBuilder {
         sql.append(tableName);
         sql.append(" where 1=1 ");
         for (Column column : columns) {
-            sql.append("<if test=\"param." + column.getName() + "!=null and param." + column.getName() + "!=''\">\n" +
-                    "    " + column.getName() + "=#{param." + ColumnSplicing.convertColumnToField(column.getName()) + "}\n" +
+            String modelField = ColumnSplicing.convertColumnToField(column.getName());
+            sql.append("<if test=\"" + modelField + "!=null and " + modelField + "!=''\">\n" +
+                    "    and " + column.getName() + "=#{" + modelField + "}\n" +
                     "</if>");
         }
         return sql.toString();
@@ -53,7 +57,7 @@ public class SqlSelectByIdBuilder implements SqlBuilder {
     @Override
     public String buildDelete() {
         StringBuffer sql = new StringBuffer();
-        sql.append("DELETE FROM `mes_parameter` WHERE " + this.primaryKey + "=#{" + ColumnSplicing.convertColumnToField(this.primaryKey) + "}");
+        sql.append("DELETE FROM `" + this.tableName + "` WHERE " + this.primaryKey + "=#{" + ColumnSplicing.convertColumnToField(this.primaryKey) + "}");
         return sql.toString();
     }
 
@@ -65,7 +69,7 @@ public class SqlSelectByIdBuilder implements SqlBuilder {
 
     @Override
     public String buildSave() {
-        StringBuffer sql = new StringBuffer("insert into `mes_parameter` ");
+        StringBuffer sql = new StringBuffer("insert into `" + this.tableName + "` ");
         String c = "(&c&)", temp_c = "";
         String v = "(&v&)", temp_v = "";
         for (int i = 0; i < this.columns.size(); i++) {

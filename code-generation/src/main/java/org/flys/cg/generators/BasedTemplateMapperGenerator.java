@@ -15,12 +15,10 @@ public class BasedTemplateMapperGenerator extends AbstractGenerator implements G
         super(packageName);
     }
 
-    String resource = "G:\\workspaces\\springcloud\\code-generation\\src\\main\\java\\org\\flys\\cg\\template\\Mapper.template";
-
     @Override
     public Product doGenerate(MetaTable metaTable) {
         super.layer = "mapper";
-        String template = FileUtil.readFile(resource);
+        String template = this.loadResource("Mapper.template");
         MapperMeta mapperMeta = new MapperMeta(metaTable);
         String text = make(template, mapperMeta);
         Product product = new Product();

@@ -8,6 +8,8 @@ public class Current {
     private String fullMapperClassName;
     private String serviceClassName;
     private String fullServiceClassName;
+    private String serviceImplClassName;
+    private String fullServiceImplClassName;
     private String controllerClassName;
     private String fullControllerClassName;
     private String requestMapping;
@@ -121,5 +123,21 @@ public class Current {
 
     public void setPrimaryKeyType(String primaryKeyType) {
         this.primaryKeyType = primaryKeyType;
+    }
+
+    public String getServiceImplClassName() {
+        return serviceImplClassName;
+    }
+
+    public void setServiceImplClassName(String serviceImplClassName) {
+        this.serviceImplClassName = serviceImplClassName;
+    }
+
+    public String getFullServiceImplClassName() {
+        return fullServiceImplClassName;
+    }
+
+    public void setFullServiceImplClassName(String fullServiceImplClassName) {
+        this.fullServiceImplClassName = fullServiceImplClassName;
     }
 }

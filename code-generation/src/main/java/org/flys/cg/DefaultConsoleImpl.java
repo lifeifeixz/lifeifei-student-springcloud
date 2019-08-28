@@ -46,6 +46,9 @@ public class DefaultConsoleImpl implements Console {
             Generator serviceGenerator = new HandwritingServiceGenerator(null);
             serviceGenerator.print(metaTable);
 
+            Generator serviceImplGenerator = new BasedServiceImplGenerator(null);
+            serviceImplGenerator.print(metaTable);
+
             Generator voGenerator = new HandWritingVoGenerator(null);
             voGenerator.print(metaTable);
 
@@ -59,7 +62,7 @@ public class DefaultConsoleImpl implements Console {
     public static void main(String[] args) {
         Context context = Context.getInstance();
         context.setPackageRoot("com.db.test");
-        context.setOutputPath("G:\\workspaces\\springcloud\\code-generation\\src\\main\\java");
+        context.setOutputPath("D:\\workspace_demo\\lifeifei-student-springcloud\\code-generation\\src\\main\\java\\");
         Console console = new DefaultConsoleImpl();
         try {
             console.invoke();

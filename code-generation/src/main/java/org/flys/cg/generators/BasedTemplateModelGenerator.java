@@ -14,6 +14,9 @@ import org.flys.cg.util.ColumnSplicing;
 
 import java.util.List;
 
+/**
+ * @author feifei.li
+ */
 public class BasedTemplateModelGenerator extends AbstractGenerator implements Generator {
     static final String DATA = "&data&";
 

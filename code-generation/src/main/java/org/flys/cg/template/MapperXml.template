@@ -8,7 +8,7 @@
         &save-sql&
     </insert>
 
-    <delete id="delete">
+    <delete id="delete" parameterType="&primary-key-type&">
         &delete-sql&
     </delete>
 

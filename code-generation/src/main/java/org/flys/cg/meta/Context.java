@@ -1,5 +1,8 @@
 package org.flys.cg.meta;
 
+/**
+ * @author feifei.li
+ */
 public class Context {
     private static Context context;
     private String packageRoot;

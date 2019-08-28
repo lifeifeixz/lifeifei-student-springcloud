@@ -7,12 +7,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author feifei.li
+ */
 public class MySqlMeterial implements RawMaterial {
     public static final String url = "jdbc:mysql://localhost:3306/information_schema";
     public static final String userName = "root";
     public static final String passWord = "root";
     private static final String tableName = "table_name";
-    private static final String database = "jst-mes";
+    private static final String database = "jst-feifei";
 
     @Override
     public List<String> getTables() {

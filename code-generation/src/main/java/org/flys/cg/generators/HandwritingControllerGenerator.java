@@ -8,6 +8,7 @@ import org.flys.cg.util.TinyIde;
 
 /**
  * 生成controller
+ * @author feifei.li
  */
 public class HandwritingControllerGenerator extends AbstractGenerator implements Generator {
     public HandwritingControllerGenerator(String packageName) {
@@ -33,6 +34,9 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLineEnd("import org.springframework.web.bind.annotation.RequestMapping");
         code.appendLineEnd("import org.springframework.beans.factory.annotation.Autowired");
         code.appendLineEnd("import org.springframework.beans.BeanUtils");
+        code.appendLineEnd("import org.springframework.web.bind.annotation.PostMapping");
+        code.appendLineEnd("import org.springframework.web.bind.annotation.GetMapping");
+        code.appendLineEnd("import org.springframework.web.bind.annotation.RequestBody");
         code.appendLineEnd("import java.util.List");
         code.appendLine("");
 
@@ -46,20 +50,26 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLineEnd(current.getServiceClassName() + " " + serviceVar);
         String voVar = StringUtil.acronymLowercase(current.getVoClassName());
         /*方法*/
-        code.appendLine("public List<" + current.getModelClassName() + "> list(" + current.getVoClassName() + " " + voVar + "){" +
-                "return " + serviceVar + ".list(null);" +
-                "}");
+        code.appendLine("@PostMapping(\"list\")");
+        code.appendLine("\tpublic List<" + current.getModelClassName() + "> list(@RequestBody " + current.getVoClassName() + " " + voVar + "){" +
+                current.getModelClassName() + " bean = new " + current.getModelClassName() + "();\n" +
+                "        BeanUtils.copyProperties(" + voVar + ", bean);\n" +
+                "\t\treturn " + serviceVar + ".list(bean);" +
+                "\t}");
 
-        code.appendLine("public int save(" + current.getVoClassName() + " " + voVar + "){\n" +
+        code.appendLine("@PostMapping(\"save\")");
+        code.appendLine("public int save(@RequestBody " + current.getVoClassName() + " " + voVar + "){\n" +
                 current.getModelClassName() + " bean = new " + current.getModelClassName() + "();\n" +
                 "        BeanUtils.copyProperties(" + voVar + ", bean);\n" +
                 "return " + serviceVar + ".add(bean);" +
                 "}");
 
-        code.appendLine("public int update(" + current.getVoClassName() + " " + voVar + "){" +
+        code.appendLine("@PostMapping(\"update\")");
+        code.appendLine("public int update(@RequestBody " + current.getVoClassName() + " " + voVar + "){" +
                 "return " + serviceVar + ".update(null);" +
                 "}");
 
+        code.appendLine("@GetMapping(\"delete\")");
         code.appendLine("public int delete(" + current.getPrimaryKeyType() + " " + current.getPrimaryKey() + "){" +
                 "return " + serviceVar + ".delete(" + current.getPrimaryKey() + ");" +
                 "}");

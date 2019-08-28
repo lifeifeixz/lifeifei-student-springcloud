@@ -28,7 +28,11 @@ public abstract class AbstractGenerator implements Generator, PackageOrganizer {
     static final String PRIMARY_KEY_TYPE = "&primary-key-type&";
     static final String IMPORT_ITEM = "&import-item&";
 
-    protected String resourceRoot = "G:\\workspaces\\springcloud\\code-generation\\src\\main\\java\\org\\flys\\cg\\template\\";
+    protected String resourceRoot = "D:\\workspace_demo\\lifeifei-student-springcloud\\code-generation\\src\\main\\java\\org\\flys\\cg\\template\\";
+
+
+    /*"G:\\workspaces\\springcloud\\code-generation\\src\\main\\java\\org\\flys\\cg\\template\\";*/
+
 
     protected String packageName;
 

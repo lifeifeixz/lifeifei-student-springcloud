@@ -1,0 +1,39 @@
+package com.db.test.service.impl;
+
+import &mapper-full-name&;
+import &model_full-name&;
+import &service-full-name&;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @author feifei.li
+ */
+@Service
+public class &service-impl-name& implements &service-name& {
+
+    @Autowired
+    private &mapper-name& mapper;
+
+    @Override
+    public int add(&model-name& model) {
+        return mapper.save(model);
+    }
+
+    @Override
+    public int delete(&primaryKey-type& &primaryKey&) {
+        return mapper.delete(&primaryKey&);
+    }
+
+    @Override
+    public int update(&model-name& model) {
+        return mapper.update(model.&primaryKey-get-method&(), model);
+    }
+
+    @Override
+    public List<&model-name&> list(&model-name& model) {
+        return mapper.findAll(model);
+    }
+}
