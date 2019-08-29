@@ -37,9 +37,11 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLineEnd("import org.springframework.web.bind.annotation.PostMapping");
         code.appendLineEnd("import org.springframework.web.bind.annotation.GetMapping");
         code.appendLineEnd("import org.springframework.web.bind.annotation.RequestBody");
+        code.appendLineEnd("import org.springframework.web.bind.annotation.CrossOrigin");
         code.appendLineEnd("import java.util.List");
         code.appendLine("");
 
+        code.appendLine("@CrossOrigin");
         code.appendLine("@RestController");
         code.appendLine("@RequestMapping(value = \"" + StringUtil.acronymLowercase(current.getModelClassName()) + "\")");
         code.appendLine("public class " + className + "{");
