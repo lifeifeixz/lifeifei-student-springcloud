@@ -55,8 +55,11 @@ public class DefaultConsoleImpl implements Console {
             Generator controllerGenerator = new HandwritingControllerGenerator(null);
             controllerGenerator.print(metaTable);
 
-            BaseJsoupWebListGenerator webListGenerator = new BaseJsoupWebListGenerator(null);
+            Generator webListGenerator = new BaseJsoupWebListGenerator(null);
             webListGenerator.print(metaTable);
+
+            Generator formGenerator = new BasedJsoupFormGenerator(null);
+            formGenerator.print(metaTable);
 
         }
 

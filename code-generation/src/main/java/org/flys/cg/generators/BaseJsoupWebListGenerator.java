@@ -21,7 +21,8 @@ public class BaseJsoupWebListGenerator extends AbstractGenerator implements Gene
 
     @Override
     public Product doGenerate(MetaTable metaTable) {
-        super.layer = "web.list";
+        String fileName = ColumnSplicing.convertColumnToField(metaTable.getTableName());
+        super.layer = "web." + fileName;
         String resource = this.loadResource("WebList.html");
         Document document = Jsoup.parse(resource);
         Element tableHeader = document.getElementById("table-header");
@@ -44,13 +45,12 @@ public class BaseJsoupWebListGenerator extends AbstractGenerator implements Gene
             }
         }
         param += "}";
+        current.put("modelJson", param);
 
-
-        String pageName = ColumnSplicing.convertColumnToField(metaTable.getTableName());
         String string = document.toString();
-        string = string.replace("&param&", param);
-        string = string.replaceAll("&tableName&", pageName);
+        string = string.replace("'&param&'", param);
+        string = string.replaceAll("&tableName&", fileName);
         string = string.replaceAll("%primaryKey%", current.getPrimaryKey());
-        return new Product(pageName + ".html", string);
+        return new Product("list.html", string);
     }
 }

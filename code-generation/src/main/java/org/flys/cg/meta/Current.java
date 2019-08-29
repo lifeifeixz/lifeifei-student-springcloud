@@ -1,7 +1,15 @@
 package org.flys.cg.meta;
 
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author feifei.li
+ */
 public class Current {
     public static final Current current = new Current();
+    private Map<String, Object> memory = new HashMap<>();
+
     private String modelClassName;
     private String fullModelClassName;
     private String mapperClassName;
@@ -139,5 +147,17 @@ public class Current {
 
     public void setFullServiceImplClassName(String fullServiceImplClassName) {
         this.fullServiceImplClassName = fullServiceImplClassName;
+    }
+
+    public Object getData(String key) {
+        return memory.get(key);
+    }
+
+    public void put(String key, Object v) {
+        memory.put(key, v);
+    }
+
+    public static Current getCurrent() {
+        return current;
     }
 }

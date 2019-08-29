@@ -59,6 +59,7 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
                 "\t\treturn " + serviceVar + ".list(bean);" +
                 "\t}");
 
+        code.appendLine("@CrossOrigin");
         code.appendLine("@PostMapping(\"save\")");
         code.appendLine("public int save(@RequestBody " + current.getVoClassName() + " " + voVar + "){\n" +
                 current.getModelClassName() + " bean = new " + current.getModelClassName() + "();\n" +

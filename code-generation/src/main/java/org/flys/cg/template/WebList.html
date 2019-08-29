@@ -13,7 +13,8 @@
     </div>
     <div>
         <hr>
-        <button v-on:click="getList">查询</button>
+        <button v-on:click="getList">查询</button> | <a href="form.html">添加</a>
+
     </div>
     <table class="table table-striped table-bordered" id="table">
         <header>
@@ -37,7 +38,7 @@
     var app = new Vue({
         el: "#app",
         data: {
-            param: &param&,
+            param: '&param&',
             result: [{
                 apiName: "synBom",
                 erpAddress: "http://10.66.52.60:8080/Api/ERPInfoGet/?GetType=EQP",
