@@ -1,5 +1,8 @@
 package &package&;
 
+/**
+ * @author feifei.li
+ */
 public class &class-name&{
 
     &data&

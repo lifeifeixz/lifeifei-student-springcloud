@@ -2,6 +2,9 @@ package org.flys.cg;
 
 import org.flys.cg.meta.MetaTable;
 
+/**
+ * @author feifei.li
+ */
 public interface SupportPrintGenerator {
 
     /**

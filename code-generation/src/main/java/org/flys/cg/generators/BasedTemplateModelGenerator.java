@@ -37,8 +37,6 @@ public class BasedTemplateModelGenerator extends AbstractGenerator implements Ge
         StringBuffer fieldStr = new StringBuffer();
         List<Column> columns = metaTable.getColumns();
         for (Column column : columns) {
-            String name = ColumnSplicing.convertColumnToField(column.getName());
-            String type = TypeConverter.exchange(column.getType());
             String field = fieldBuilder.build(column);
             fieldStr.append(field);
             fieldStr.append("\n");

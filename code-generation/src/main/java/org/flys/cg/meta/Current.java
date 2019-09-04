@@ -23,6 +23,8 @@ public class Current {
     private String requestMapping;
     private String voClassName;
     private String fullVoClassName;
+    private String saveVoClassName;
+    private String fullSaveVoClassName;
     private String primaryKey;
     private String primaryKeyType;
 
@@ -159,5 +161,21 @@ public class Current {
 
     public static Current getCurrent() {
         return current;
+    }
+
+    public String getSaveVoClassName() {
+        return saveVoClassName;
+    }
+
+    public void setSaveVoClassName(String saveVoClassName) {
+        this.saveVoClassName = saveVoClassName;
+    }
+
+    public String getFullSaveVoClassName() {
+        return fullSaveVoClassName;
+    }
+
+    public void setFullSaveVoClassName(String fullSaveVoClassName) {
+        this.fullSaveVoClassName = fullSaveVoClassName;
     }
 }

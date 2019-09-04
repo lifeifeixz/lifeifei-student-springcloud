@@ -9,6 +9,8 @@ import org.flys.cg.util.ColumnSplicing;
 
 /**
  * 手写service
+ *
+ * @author feifei.li
  */
 public class HandwritingServiceGenerator extends AbstractGenerator implements Generator {
     public HandwritingServiceGenerator(String packageName) {
@@ -39,18 +41,40 @@ public class HandwritingServiceGenerator extends AbstractGenerator implements Ge
         code.appendLineEnd("package " + context.getPackageRoot() + "." + layer);
         code.appendLineEnd("import " + current.getFullModelClassName());
         code.appendLine("import java.util.List;");
-        //        code.appendLineEnd("import " + current.getFullMapperClassName());
+
+        code.appendLine("/**\n" +
+                " * @author feifei.li\n" +
+                " */");
         code.appendLine("public interface " + serviceName + "{");
-//        code.appendLineEnd("\t" + current.getMapperClassName() + " " + StringUtil.acronymLowercase(current.getMapperClassName()));
+
+        code.appendLine("/**\n" +
+                " * 添加\n" +
+                " *\n" +
+                " * @param " + StringUtil.acronymLowercase(current.getModelClassName()) + "\n" +
+                " * @return\n" +
+                " */");
         code.appendLineEnd("\tint add(" + current.getModelClassName() + " " + StringUtil.acronymLowercase(current.getModelClassName()) + ")");
+        code.appendLine("/**\n" +
+                " * 删除\n" +
+                " *\n" +
+                " * @param " + modelMeta.getPrimaryKey() + "\n" +
+                " * @return\n" +
+                " */");
         code.appendLineEnd("\tint delete(" + modelMeta.getPrimaryKeyType() + " " + modelMeta.getPrimaryKey() + ")");
         code.appendLine("     /**\n" +
-                "     * 修改\n" +
-                "     *\n" +
-                "     * @param " + StringUtil.acronymLowercase(current.getModelClassName()) + "\n" +
-                "     * @return\n" +
-                "     */");
+                "      * 修改\n" +
+                "      *\n" +
+                "      * @param " + StringUtil.acronymLowercase(current.getModelClassName()) + "\n" +
+                "      * @return\n" +
+                "      */");
         code.appendLineEnd("\tint update(" + current.getModelClassName() + " " + StringUtil.acronymLowercase(current.getModelClassName()) + ")");
+
+        code.appendLine("/**\n" +
+                " * 筛选列表\n" +
+                " *\n" +
+                " * @param " + StringUtil.acronymLowercase(current.getModelClassName()) + "\n" +
+                " * @return\n" +
+                " */");
         code.appendLineEnd("\tList<" + current.getModelClassName() + "> list(" + current.getModelClassName() + " " + StringUtil.acronymLowercase(current.getModelClassName()) + ")");
 
         code.appendLine("}");

@@ -8,6 +8,7 @@ import org.flys.cg.util.FileUtil;
 
 /**
  * 基于模板的mapper代码生成器
+ * @author feifei.li
  */
 public class BasedTemplateMapperGenerator extends AbstractGenerator implements Generator {
 

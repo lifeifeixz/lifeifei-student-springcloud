@@ -1,5 +1,8 @@
 package org.flys.cg.meta;
 
+/**
+ * @author feifei.li
+ */
 public interface PackageOrganizer {
     String SPOT=".";
 

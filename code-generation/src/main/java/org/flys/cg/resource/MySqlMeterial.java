@@ -15,7 +15,7 @@ public class MySqlMeterial implements RawMaterial {
     public static final String userName = "root";
     public static final String passWord = "root";
     private static final String tableName = "table_name";
-    private static final String database = "jst-feifei";
+    private static final String database = "mes";
 
     @Override
     public List<String> getTables() {

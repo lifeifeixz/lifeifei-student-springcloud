@@ -4,6 +4,9 @@ package &package&
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
+/**
+ * @author feifei.li
+ */
 @Mapper
 public interface &class-name& {
 

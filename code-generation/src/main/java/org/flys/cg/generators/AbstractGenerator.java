@@ -1,6 +1,9 @@
 package org.flys.cg.generators;
 
+import de.hunsicker.jalopy.Jalopy;
 import org.flys.cg.*;
+import org.flys.cg.make.CodeDresser;
+import org.flys.cg.make.DefaultCodeDresser;
 import org.flys.cg.meta.Context;
 import org.flys.cg.meta.Current;
 import org.flys.cg.meta.MetaTable;
@@ -47,6 +50,10 @@ public abstract class AbstractGenerator implements Generator, PackageOrganizer {
         return resource;
     }
 
+    public String format(String fileName, String source) {
+        return new DefaultCodeDresser(fileName).format(source);
+    }
+
     @Override
     public void print(MetaTable table) {
         Product product = this.doGenerate(table);
@@ -55,7 +62,11 @@ public abstract class AbstractGenerator implements Generator, PackageOrganizer {
         String path = packagePath.replaceAll("\\.", Matcher.quoteReplacement(File.separator));
         String outPath = context.getOutputPath() + File.separator + path + File.separator;
         String fileName = StringUtil.acronymUpperCase(ColumnSplicing.convertColumnToField(product.getName()));
-        FileUtil.writeFile(outPath, fileName, product.getContext());
+        String code = product.getContext();
+        if (!fileName.endsWith(".xml") && !fileName.endsWith(".html") && !fileName.endsWith(".vue")) {
+            code = format(fileName, code);
+        }
+        FileUtil.writeFile(outPath, fileName, code);
     }
 
     private static Map<String, String> packageCache = new HashMap<>();

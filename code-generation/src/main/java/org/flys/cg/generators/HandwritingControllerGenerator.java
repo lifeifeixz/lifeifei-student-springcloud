@@ -8,6 +8,7 @@ import org.flys.cg.util.TinyIde;
 
 /**
  * 生成controller
+ *
  * @author feifei.li
  */
 public class HandwritingControllerGenerator extends AbstractGenerator implements Generator {
@@ -38,9 +39,13 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLineEnd("import org.springframework.web.bind.annotation.GetMapping");
         code.appendLineEnd("import org.springframework.web.bind.annotation.RequestBody");
         code.appendLineEnd("import org.springframework.web.bind.annotation.CrossOrigin");
+        code.appendLineEnd("import " + current.getFullSaveVoClassName());
         code.appendLineEnd("import java.util.List");
         code.appendLine("");
 
+        code.appendLine("/**\n" +
+                " * @author feifei.li\n" +
+                " */");
         code.appendLine("@CrossOrigin");
         code.appendLine("@RestController");
         code.appendLine("@RequestMapping(value = \"" + StringUtil.acronymLowercase(current.getModelClassName()) + "\")");
@@ -61,15 +66,17 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
 
         code.appendLine("@CrossOrigin");
         code.appendLine("@PostMapping(\"save\")");
-        code.appendLine("public int save(@RequestBody " + current.getVoClassName() + " " + voVar + "){\n" +
+        code.appendLine("public int save(@RequestBody " + current.getSaveVoClassName() + " saveVo){\n" +
                 current.getModelClassName() + " bean = new " + current.getModelClassName() + "();\n" +
-                "        BeanUtils.copyProperties(" + voVar + ", bean);\n" +
+                "        BeanUtils.copyProperties(saveVo, bean);" +
                 "return " + serviceVar + ".add(bean);" +
                 "}");
 
         code.appendLine("@PostMapping(\"update\")");
-        code.appendLine("public int update(@RequestBody " + current.getVoClassName() + " " + voVar + "){" +
-                "return " + serviceVar + ".update(null);" +
+        code.appendLine("public int update(@RequestBody " + current.getVoClassName() + " vo){" +
+                current.getModelClassName() + " bean = new " + current.getModelClassName() + "();\n" +
+                "        BeanUtils.copyProperties(vo, bean);" +
+                "return " + serviceVar + ".update(bean);" +
                 "}");
 
         code.appendLine("@GetMapping(\"delete\")");

@@ -5,31 +5,32 @@ import org.flys.cg.builder.JavaDataMethodBuilderInterface;
 import org.flys.cg.builder.JavaDataMethodCodeBuilder;
 import org.flys.cg.meta.Column;
 import org.flys.cg.meta.MetaTable;
+import org.flys.cg.util.ColumnSplicing;
 import org.flys.cg.util.TinyIde;
 import org.flys.cg.util.TypeConverter;
-import org.flys.cg.util.ColumnSplicing;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * vo生成器
+ * save操作vo生成器
  *
  * @author feifei.li
  */
-public class HandWritingVoGenerator extends AbstractGenerator implements Generator {
+public class HandWritingSaveVoGenerator extends AbstractGenerator implements Generator {
     private Set<String> imports = new HashSet<>();
 
     protected void doImport(String invoke) {
         imports.add(invoke);
     }
 
-    public HandWritingVoGenerator(String packageName) {
+    public HandWritingSaveVoGenerator(String packageName) {
         super(packageName);
     }
 
     JavaDataMethodBuilderInterface javaDataMethodCodeBuilder = new JavaDataMethodCodeBuilder();
 
+    @SuppressWarnings("all")
     @Override
     public Product doGenerate(MetaTable metaTable) {
         super.layer = "vo";
@@ -37,7 +38,7 @@ public class HandWritingVoGenerator extends AbstractGenerator implements Generat
         TinyIde vo = new TinyIde();
         vo.appendLineEnd("package " + packageName);
         vo.appendLine("&import&");
-        String voClassName = current.getModelClassName() + "Vo";
+        String voClassName = current.getModelClassName() + "AddVo";
         vo.appendLine("/**\n" +
                 " * @author feifei.li\n" +
                 " */");
@@ -46,7 +47,7 @@ public class HandWritingVoGenerator extends AbstractGenerator implements Generat
         for (Column column : metaTable.getColumns()) {
             String field = ColumnSplicing.convertColumnToField(column.getName());
             String validator = "";
-            if (column.isNotEmpty()) {
+            if (column.isNotEmpty() && !column.isPrimaryKey()) {
                 if (TypeConverter.exchange(column.getType()).equals("String")) {
                     this.doImport("javax.validation.constraints.NotEmpty");
                     validator = "@NotEmpty(message = \"" + column.getNotes() + "不能为空\")";
@@ -68,8 +69,8 @@ public class HandWritingVoGenerator extends AbstractGenerator implements Generat
             importText += "import " + imp + ";\n";
         }
         text = text.replace("&import&", importText);
-        current.setVoClassName(voClassName);
-        current.setFullVoClassName(packageName + SPOT + voClassName);
+        current.setSaveVoClassName(voClassName);
+        current.setFullSaveVoClassName(packageName + SPOT + voClassName);
         return new Product(voClassName + ".java", text);
     }
 }

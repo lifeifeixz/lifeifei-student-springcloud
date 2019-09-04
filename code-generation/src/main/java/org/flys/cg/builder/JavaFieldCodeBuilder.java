@@ -12,7 +12,11 @@ import org.flys.cg.util.ColumnSplicing;
 public class JavaFieldCodeBuilder implements JavaCodeBuilder {
     @Override
     public String build(Column column) {
-        return "/**" + column.getNotes() + "*/\n"
+        String notes = column.getNotes();
+        if (notes == null || notes.trim().length() == 0) {
+            notes = column.getName();
+        }
+        return "/** " + notes + " */\n"
                 + build(ColumnSplicing.convertColumnToField(column.getName()), TypeConverter.exchange(column.getType()));
     }
 
