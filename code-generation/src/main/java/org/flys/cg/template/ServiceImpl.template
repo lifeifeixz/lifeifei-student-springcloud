@@ -1,4 +1,4 @@
-package com.db.test.service.impl;
+package &service-impl-package&;
 
 import &mapper-full-name&;
 import &model_full-name&;
@@ -35,5 +35,10 @@ public class &service-impl-name& implements &service-name& {
     @Override
     public List<&model-name&> list(&model-name& model) {
         return mapper.findAll(model);
+    }
+
+    @Override
+    public &model-name& get(&primaryKey-type& &primaryKey&) {
+        return mapper.findOne(&primaryKey&);
     }
 }

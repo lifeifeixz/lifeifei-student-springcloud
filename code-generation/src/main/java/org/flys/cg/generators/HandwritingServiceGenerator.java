@@ -6,6 +6,7 @@ import org.flys.cg.meta.ModelMeta;
 import org.flys.cg.util.StringUtil;
 import org.flys.cg.util.TinyIde;
 import org.flys.cg.util.ColumnSplicing;
+import org.flys.cg.util.TypeConverter;
 
 /**
  * 手写service
@@ -76,6 +77,16 @@ public class HandwritingServiceGenerator extends AbstractGenerator implements Ge
                 " * @return\n" +
                 " */");
         code.appendLineEnd("\tList<" + current.getModelClassName() + "> list(" + current.getModelClassName() + " " + StringUtil.acronymLowercase(current.getModelClassName()) + ")");
+
+        code.appendLine("/**\n" +
+                " * 根据主键查询\n" +
+                " *\n" +
+                " * @param " + current.getPrimaryKey() + "\n" +
+                " * @return\n" +
+                " */");
+        String primaryKey = ColumnSplicing.convertColumnToField(current.getPrimaryKey());
+        code.appendLineEnd("\t" + current.getModelClassName() + " get(" + TypeConverter.exchange(current.getPrimaryKeyType()) + " " + primaryKey + ")");
+
 
         code.appendLine("}");
         return code.toString();

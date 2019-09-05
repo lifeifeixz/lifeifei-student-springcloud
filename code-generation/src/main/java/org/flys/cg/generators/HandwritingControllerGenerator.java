@@ -38,7 +38,8 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLineEnd("import org.springframework.web.bind.annotation.PostMapping");
         code.appendLineEnd("import org.springframework.web.bind.annotation.GetMapping");
         code.appendLineEnd("import org.springframework.web.bind.annotation.RequestBody");
-        code.appendLineEnd("import org.springframework.web.bind.annotation.CrossOrigin");
+        /*code.appendLineEnd("import org.springframework.web.bind.annotation.CrossOrigin");*/
+        code.appendLineEnd("import org.springframework.validation.annotation.Validated");
         code.appendLineEnd("import " + current.getFullSaveVoClassName());
         code.appendLineEnd("import java.util.List");
         code.appendLine("");
@@ -46,7 +47,7 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
         code.appendLine("/**\n" +
                 " * @author feifei.li\n" +
                 " */");
-        code.appendLine("@CrossOrigin");
+        /*code.appendLine("@CrossOrigin");*/
         code.appendLine("@RestController");
         code.appendLine("@RequestMapping(value = \"" + StringUtil.acronymLowercase(current.getModelClassName()) + "\")");
         code.appendLine("public class " + className + "{");
@@ -64,16 +65,16 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
                 "\t\treturn " + serviceVar + ".list(bean);" +
                 "\t}");
 
-        code.appendLine("@CrossOrigin");
+        /*code.appendLine("@CrossOrigin");*/
         code.appendLine("@PostMapping(\"save\")");
-        code.appendLine("public int save(@RequestBody " + current.getSaveVoClassName() + " saveVo){\n" +
+        code.appendLine("public int save(@Validated @RequestBody " + current.getSaveVoClassName() + " saveVo){\n" +
                 current.getModelClassName() + " bean = new " + current.getModelClassName() + "();\n" +
                 "        BeanUtils.copyProperties(saveVo, bean);" +
                 "return " + serviceVar + ".add(bean);" +
                 "}");
 
         code.appendLine("@PostMapping(\"update\")");
-        code.appendLine("public int update(@RequestBody " + current.getVoClassName() + " vo){" +
+        code.appendLine("public int update(@Validated @RequestBody " + current.getVoClassName() + " vo){" +
                 current.getModelClassName() + " bean = new " + current.getModelClassName() + "();\n" +
                 "        BeanUtils.copyProperties(vo, bean);" +
                 "return " + serviceVar + ".update(bean);" +
@@ -84,7 +85,14 @@ public class HandwritingControllerGenerator extends AbstractGenerator implements
                 "return " + serviceVar + ".delete(" + current.getPrimaryKey() + ");" +
                 "}");
 
+        code.appendLine("@GetMapping(\"get\")");
+        code.appendLine("public " + current.getModelClassName() + " get(" + current.getPrimaryKeyType() + " " + current.getPrimaryKey() + "){" +
+                "return " + serviceVar + ".get(" + current.getPrimaryKey() + ");" +
+                "}");
+
         code.appendLine("}");
+
+
         return new Product(className + ".java", code.toString());
     }
 }

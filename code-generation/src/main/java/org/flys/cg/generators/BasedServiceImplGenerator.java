@@ -22,6 +22,7 @@ public class BasedServiceImplGenerator extends AbstractGenerator implements Gene
     public static final String primaryKey_type = "&primaryKey-type&";
     public static final String primary_key = "&primaryKey&";
     public static final String primaryKey_get_method = "&primaryKey-get-method&";
+    public static final String SERVICE_IMPL_PACKAGE = "&service-impl-package&";
 
 
     public BasedServiceImplGenerator(String packageName) {
@@ -47,7 +48,8 @@ public class BasedServiceImplGenerator extends AbstractGenerator implements Gene
                 .replaceAll(model_name, current.getModelClassName())
                 .replaceAll(primaryKey_type, primaryKeyType)
                 .replaceAll(primary_key, primaryKey)
-                .replaceAll(primaryKey_get_method, keyGetMethod);
+                .replaceAll(primaryKey_get_method, keyGetMethod)
+                .replaceAll(SERVICE_IMPL_PACKAGE, packageName);
 
         current.setServiceImplClassName(className);
         current.setFullServiceImplClassName(fullClassName);
